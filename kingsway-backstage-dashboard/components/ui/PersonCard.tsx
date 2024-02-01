@@ -6,13 +6,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  CardPersonHeader,
 } from "@/components/ui/card"
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar"
 
 export default function PersonCard() {
   return (
     <Card className="card-container flex">
-      <CardHeader className="avatar-container flex justify-center w-48 h-48">
+      <CardPersonHeader className="w-48 h-48">
         <Avatar>
           <AvatarImage
             className="rounded-full"
@@ -20,7 +21,7 @@ export default function PersonCard() {
           />
           <AvatarFallback>JD</AvatarFallback>
         </Avatar>
-      </CardHeader>
+      </CardPersonHeader>
       <div className="text-container flex flex-col content-center ">
         <CardTitle className="name-text flex self-center">
           <h1>Josh D.</h1>
