@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Dialog,
   DialogContent,
@@ -12,7 +14,7 @@ import NewServiceForm from "@/components/ui/NewServiceForm"
 
 export default function Services() {
   return (
-    <>
+    <div suppressHydrationWarning>
       <h1>Services Page</h1>
       <Dialog>
         <DialogTrigger>
@@ -26,6 +28,6 @@ export default function Services() {
           <NewServiceForm></NewServiceForm>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   )
 }

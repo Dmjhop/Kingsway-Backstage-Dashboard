@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import "./globals.css"
-import Navigation from "@/components/ui/Navigation"
-import { DarkModeToggle } from "@/components/ui/DarkModeToggle"
 import MainNavbar from "@/components/ui/MainNavbar"
+import NextAuth from "next-auth/next"
+import { ReactNode } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

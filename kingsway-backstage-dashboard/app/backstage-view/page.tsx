@@ -1,3 +1,5 @@
+"use client"
+
 import PersonCard from "@/components/ui/PersonCard"
 import {
   Dialog,
@@ -22,7 +24,7 @@ import NewServiceForm from "@/components/ui/NewServiceForm"
 
 export default function BackstageDisplay() {
   return (
-    <>
+    <div suppressHydrationWarning>
       <h1>Backstage Display</h1>
       <Dialog>
         <DialogTrigger>
@@ -36,6 +38,6 @@ export default function BackstageDisplay() {
           <NewServiceForm></NewServiceForm>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   )
 }

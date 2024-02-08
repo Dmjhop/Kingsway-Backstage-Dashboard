@@ -13,8 +13,6 @@ export default function Home() {
   return (
     <main className="flex">
       <h1>Kingsway Worship Backstage</h1>
-
-      <Link href={`/backstage-tv-display`}>Backstage View</Link>
     </main>
   )
 }
