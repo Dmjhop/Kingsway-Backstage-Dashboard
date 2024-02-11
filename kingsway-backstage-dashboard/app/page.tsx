@@ -8,10 +8,12 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Link from "next/link"
+import MainNavbar from "@/components/ui/MainNavbar"
 
 export default function Home() {
   return (
-    <main className="flex">
+    <main className="">
+      <MainNavbar></MainNavbar>
       <h1>Kingsway Worship Backstage</h1>
     </main>
   )
