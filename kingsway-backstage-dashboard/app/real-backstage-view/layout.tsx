@@ -7,7 +7,7 @@ export default function BackstageTVLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="w-[1920px] h-[1080px] bg-slate-500">
+    <div className="w-full h-full bg-slate-500">
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
