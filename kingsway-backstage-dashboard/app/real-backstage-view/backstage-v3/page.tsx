@@ -32,28 +32,15 @@ export default async function BackstageView() {
       </header>
       {/* Dashboard Entire Component */}
       <div
-        className="grid grid-rows-3 grid-cols-4 justify-center mx-8
+        className="grid grid-rows-3 grid-cols-3 justify-center mx-8
       ">
-        {/* Header Component */}
-
-        {/* Service Order Component */}
-        <div className="row-start-1 row-span-1 justify-self-center">
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium row-start-1 mx-auto">
-            Service Order
-          </h2>
-          <SmallCardBackground></SmallCardBackground>
-        </div>
-
         {/* MD Assignments Component */}
-        <div className="row-start-2 row-span-1">
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
-            MD Assignments
-          </h2>
+        <div className="row-start-2 row-span-1 col-start-1">
           <SmallCardBackground></SmallCardBackground>
         </div>
 
         {/* Vocal Assignments Component */}
-        <div className="col-start-2 row-start-1 row-span-2 justify-self-center">
+        <div className="col-start-1 row-start-1 row-span-2 justify-self-center">
           <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
             Vocals
           </h2>
@@ -61,26 +48,23 @@ export default async function BackstageView() {
         </div>
 
         {/* In Ear Monitors Assignments Component */}
-        <div className="col-start-3 row-start-1 row-span-2 justify-self-center">
+        <div className="col-start-2 row-start-1 row-span-2 justify-self-center">
           <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-self-center mx-auto">
             In Ear Monitors
           </h2>
           <VerticalCardBackground></VerticalCardBackground>
         </div>
 
-        {/* Instrument Packs Component */}
-        <div className="col-start-4">
+        {/* Production Team Component */}
+        <div className="col-start-3">
           <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
-            Instrument Packs
+            Production Team
           </h2>
-          <SmallCardBackground></SmallCardBackground>
+          <VerticalCardBackground></VerticalCardBackground>
         </div>
 
         {/* Wired IEMs Component */}
-        <div className="col-start-4 row-start-2">
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
-            Wired IEMs
-          </h2>
+        <div className="col-start-2 row-start-2">
           <SmallCardBackground></SmallCardBackground>
         </div>
 
@@ -91,22 +75,6 @@ export default async function BackstageView() {
           <div className="">
             <h2 className="w-[370px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
               Stage Layout
-            </h2>
-            <LargeCardBackground></LargeCardBackground>
-          </div>
-
-          {/* Notes Component */}
-          <div className="">
-            <h2 className="w-[370px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
-              Notes
-            </h2>
-            <LargeCardBackground></LargeCardBackground>
-          </div>
-
-          {/* Production Team */}
-          <div className="">
-            <h2 className="w-[370px] h-[50px] text-center text-white text-[32px] font-medium mx-auto">
-              Production Team
             </h2>
             <LargeCardBackground></LargeCardBackground>
           </div>
