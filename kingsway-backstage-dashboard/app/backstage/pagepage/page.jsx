@@ -106,17 +106,21 @@ export default async function BackstageView() {
     (person) => !getRidVals.includes(person.position)
   )
 
+  // scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl flex flex-row items-center basis-1/5
+
   return (
     <div>
       {/* Header Component */}
-      <header className="w-[731px] h-[68px] text-center text-white text-5xl font-black ">
-        Kingsway Worship Dashboard
+      <header className="w-[731px] h-[68px] text-white text-5xl font-black ">
+        <h1 className="font-extrabold lg:text-5xl">
+          Kingsway Worship Dashboard
+        </h1>
       </header>
       {/* Dashboard Entire Component */}
       <div
         className="grid grid-rows-2 grid-cols-3 justify-center mx-8
       ">
-        <div>
+        <div className="row-start-1 row-span-1 col-start-3">
           <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
             Production Team
           </h2>
@@ -129,7 +133,7 @@ export default async function BackstageView() {
             </TableHeader>
             <TableBody>
               {productionPeopleList.map((person) => (
-                <TableRow key={person}>
+                <TableRow key={person} className="font-normal text-lg">
                   <TableCell>{person.position}</TableCell>
                   <TableCell>{person.name}</TableCell>
                 </TableRow>
@@ -137,13 +141,13 @@ export default async function BackstageView() {
             </TableBody>
           </Table>
         </div>
-        <div>
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
+        <div className="row-start-1 row-span-2 col-start-1">
+          <h2 className="w-[500px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
             Worship Team
           </h2>
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow className="font-normal text-lg">
                 <TableHead>Role</TableHead>
                 <TableHead>Person</TableHead>
                 <TableHead>VOX/IEM/MD Info</TableHead>
@@ -151,7 +155,7 @@ export default async function BackstageView() {
             </TableHeader>
             <TableBody>
               {worshipPeopleList.map((person) => (
-                <TableRow key={person}>
+                <TableRow key={person} className="font-normal text-lg">
                   <TableCell>{person.position}</TableCell>
                   <TableCell>{person.name}</TableCell>
                   <TableCell>{person.notes}</TableCell>
@@ -161,23 +165,10 @@ export default async function BackstageView() {
           </Table>
         </div>
         {/* MD Assignments Component */}
-        <div className="row-start-1 row-span-1 col-start-1">
-          <p>skdlhjfkjd</p>
-        </div>
 
         {/* Vocal Assignments Component */}
-        <div className="col-start-1 row-start-1 row-span-2 justify-self-center">
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
-            Vocals
-          </h2>
-        </div>
 
         {/* In Ear Monitors Assignments Component */}
-        <div className="col-start-2 row-start-1 row-span-2 justify-self-center">
-          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-self-center mx-auto">
-            In Ear Monitors
-          </h2>
-        </div>
 
         {/* Production Team Component */}
 
