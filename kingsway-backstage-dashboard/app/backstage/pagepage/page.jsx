@@ -44,6 +44,7 @@ export default async function BackstageView() {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
+    cache: "no-store",
   }
 
   let worshipPCOData
