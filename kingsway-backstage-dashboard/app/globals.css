@@ -67,7 +67,7 @@
 }
 
 .backPic {
-  background-image: url(../public/currchboardbackground.png);
+  background-color: black;
 }
 
 @layer base {

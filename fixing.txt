@@ -1,1 +1,56 @@
 services.v2.events.plan.live.updated
+
+
+This API call works for grabbing all positions for a particular plan and what roles the person is scheduled to do that sunday
+https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75144412/team_members
+
+
+One of the attributes is NOTES which is a string
+
+So when an APi call is made, once the data comes back if the notes say v1,v2,v3,v4,v5 that will associate the state of the dashboard and pull the first name/last initial(both through JS string manipulation)/photo_thumbnail attribute and display that beside the name
+
+Notes will go as followed (Notes only need to be used for the band)
+v1 = Vox 1
+v2 = Vox 2
+v3 = Vox 3
+v4 = Vox 4
+v5 = Vox 5
+v6 = Vox 6
+
+iem1 = IEM 1
+iem2 = IEM 2
+iem3 = IEM 3
+iem4 = IEM 4
+iem5 = IEM 5
+iem6 = IEM 6
+wired = wired
+
+switchmd = Switch MD
+wiredMD = Wired MD
+
+inst1 = Instrument Pack 1
+
+Production Team roles will be associated with the attribute team_position_name
+
+https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75144412/team_members?include=team&where[team_id]=6206998
+^^^^^^^^^^^^^^^
+This will call for the plan and only return the team members by the specific team they happen to be included in whether that's production or worship
+
+Need to Limit the Roles to:
+Tech Director
+Video Director
+FOH Sound
+Lights
+ProPresenter
+Broadcast Sound
+
+
+Next Questions:
+1. How do I advance the plan dynamically?
+
+2. How do I make a stage map that makes sense? (look up drag and drop js frameworks)
+
+3. How will I be able to find the the servicetype correct id and the team id?
+    ANSWER: The API explorer will provide the particular service type and team id when I gain developer access to PCO
+
+Remember to set the right service id to get the notes needed!!!
