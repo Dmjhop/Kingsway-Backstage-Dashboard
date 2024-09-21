@@ -53,7 +53,7 @@ export default async function BackstageView() {
   // ? API CALL FOR WORSHIP TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75144412/team_members?include=team&where[team_id]=6206998",
+      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?include=team&where[team_id]=6206998",
       requestOptions
     )
     worshipPCOData = await response.json()
@@ -63,7 +63,7 @@ export default async function BackstageView() {
   // ? API CALL FOR PRODUCTION TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75144412/team_members?include=team&where[team_id]=6206999",
+      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?where[team_id]=6206999",
       requestOptions
     )
     productionPCOData = await response.json()
@@ -97,6 +97,8 @@ export default async function BackstageView() {
   } else {
     console.error("pcoData is undefined or empty")
   }
+
+  // ! Takes out Positions Unnecessary to the Dashboard
   const getRidVals = ["Camera", "Video Switcher", "10:30am Mod", "8:30am Mod"]
 
   productionPeopleList = productionPeopleList.filter(
@@ -111,7 +113,7 @@ export default async function BackstageView() {
       </header>
       {/* Dashboard Entire Component */}
       <div
-        className="grid grid-rows-3 grid-cols-3 justify-center mx-8
+        className="grid grid-rows-2 grid-cols-3 justify-center mx-8
       ">
         <div>
           <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
@@ -129,6 +131,29 @@ export default async function BackstageView() {
                 <TableRow key={person}>
                   <TableCell>{person.position}</TableCell>
                   <TableCell>{person.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+        <div>
+          <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
+            Worship Team
+          </h2>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Role</TableHead>
+                <TableHead>Person</TableHead>
+                <TableHead>VOX/IEM/MD Info</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {worshipPeopleList.map((person) => (
+                <TableRow key={person}>
+                  <TableCell>{person.position}</TableCell>
+                  <TableCell>{person.name}</TableCell>
+                  <TableCell>{person.notes}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
