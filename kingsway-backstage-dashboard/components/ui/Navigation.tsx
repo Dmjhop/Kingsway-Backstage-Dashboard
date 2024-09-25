@@ -166,10 +166,7 @@ export default function Navigation() {
 
             {/* Backstage View Button */}
             <NavigationMenuItem className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-              <Link
-                href="/real-backstage-view/backstage-v3"
-                legacyBehavior
-                passHref>
+              <Link href="/backstage/pagepage" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <Monitor className="pr-1" />
                   Backstage View

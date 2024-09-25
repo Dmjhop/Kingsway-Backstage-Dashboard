@@ -33,6 +33,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+import { unstable_noStore as noStore } from "next/cache"
+
 export default async function BackstageView() {
   const myHeaders = new Headers()
   myHeaders.append(
@@ -44,7 +46,6 @@ export default async function BackstageView() {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
-    cache: "no-store",
   }
 
   let worshipPCOData
