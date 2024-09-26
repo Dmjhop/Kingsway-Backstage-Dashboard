@@ -54,6 +54,7 @@ export default async function BackstageView() {
   let productionPeopleList
   // ? API CALL FOR WORSHIP TEAM
   try {
+    noStore()
     const response = await fetch(
       "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?include=team&where[team_id]=6206998",
       requestOptions
@@ -64,6 +65,7 @@ export default async function BackstageView() {
   }
   // ? API CALL FOR PRODUCTION TEAM
   try {
+    noStore()
     const response = await fetch(
       "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?where[team_id]=6206999",
       requestOptions
