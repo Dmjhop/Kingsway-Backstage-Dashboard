@@ -34,7 +34,6 @@ import {
 } from "@/components/ui/table"
 
 import { unstable_noStore as noStore } from "next/cache"
-
 export default async function BackstageView() {
   const myHeaders = new Headers()
   myHeaders.append(
@@ -46,7 +45,7 @@ export default async function BackstageView() {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
-    cache: "no-store",
+    next: {},
   }
 
   let worshipPCOData
@@ -55,10 +54,14 @@ export default async function BackstageView() {
   let productionPeopleList
   // ? API CALL FOR WORSHIP TEAM
   try {
-    noStore()
     const response = await fetch(
       "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?include=team&where[team_id]=6206998",
-      requestOptions
+      requestOptions,
+      {
+        next: {
+          revalidate: 60,
+        },
+      }
     )
     worshipPCOData = await response.json()
   } catch (error) {
@@ -66,7 +69,6 @@ export default async function BackstageView() {
   }
   // ? API CALL FOR PRODUCTION TEAM
   try {
-    noStore()
     const response = await fetch(
       "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?where[team_id]=6206999",
       requestOptions
@@ -187,3 +189,4 @@ export default async function BackstageView() {
     </div>
   )
 }
+export const fetchCache = "force-no-store"
