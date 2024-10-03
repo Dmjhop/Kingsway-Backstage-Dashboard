@@ -55,7 +55,7 @@ export default async function BackstageView() {
   // ? API CALL FOR WORSHIP TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?include=team&where[team_id]=6206998",
+      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75823438/team_members?include=team&where[team_id]=6206998",
       requestOptions,
       {
         next: {
@@ -70,7 +70,7 @@ export default async function BackstageView() {
   // ? API CALL FOR PRODUCTION TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75552321/team_members?where[team_id]=6206999",
+      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75823438/team_members?where[team_id]=6206999",
       requestOptions
     )
     productionPCOData = await response.json()
