@@ -33,7 +33,6 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { unstable_noStore as noStore } from "next/cache"
 export default async function BackstageView() {
   const myHeaders = new Headers()
   myHeaders.append(
@@ -45,23 +44,33 @@ export default async function BackstageView() {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
-    next: {},
+    next: {
+      revalidate: 60,
+    },
   }
 
   let worshipPCOData
   let worshipPeopleList
   let productionPCOData
   let productionPeopleList
+  let currentServiceID
+
+  //? API CALL FOR THE CURRENT SERVICE ID IN THE LIST
+  try {
+    const response = await fetch(
+      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans?filter=future&per_page=1",
+      requestOptions
+    )
+    currentServiceID = await response.json()
+    console.log(currentServiceID)
+  } catch (error) {
+    console.error(error)
+  }
   // ? API CALL FOR WORSHIP TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75823438/team_members?include=team&where[team_id]=6206998",
-      requestOptions,
-      {
-        next: {
-          revalidate: 60,
-        },
-      }
+      `https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/${currentServiceID.data[0].id}/team_members?include=team&where[team_id]=6206998`,
+      requestOptions
     )
     worshipPCOData = await response.json()
   } catch (error) {
@@ -70,7 +79,7 @@ export default async function BackstageView() {
   // ? API CALL FOR PRODUCTION TEAM
   try {
     const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/75823438/team_members?where[team_id]=6206999",
+      `https://api.planningcenteronline.com/services/v2/service_types/1536328/plans/${currentServiceID.data[0].id}/team_members?where[team_id]=6206999`,
       requestOptions
     )
     productionPCOData = await response.json()
