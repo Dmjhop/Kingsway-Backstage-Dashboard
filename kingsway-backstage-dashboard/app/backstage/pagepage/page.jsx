@@ -64,7 +64,7 @@ export default async function BackstageView() {
       requestOptions
     )
     currentService = await response.json()
-    console.log(currentService)
+    // console.log(currentService)
   } catch (error) {
     console.error(error)
   }
@@ -105,8 +105,9 @@ export default async function BackstageView() {
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
+      status: member.attributes.status,
     }))
-    console.log(worshipPeopleList)
+    // console.log(worshipPeopleList)
   } else {
     console.error("pcoWORSHIPData is undefined or empty")
   }
@@ -120,8 +121,9 @@ export default async function BackstageView() {
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
+      status: member.attributes.status,
     }))
-    console.log(productionPeopleList)
+    // console.log(productionPeopleList)
   } else {
     console.error("pcoPRODUCTIONData is undefined or empty")
   }
@@ -136,11 +138,14 @@ export default async function BackstageView() {
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
+      status: member.attributes.status,
     }))
     console.log(campusPeopleList)
   } else {
     console.error("pcoCAMPUSData is undefined or empty")
   }
+
+  // ! Establishing Declined Folks
 
   // ! Takes out Positions Unnecessary to the Dashboard
   const getRidinRoomVals = [
@@ -204,12 +209,13 @@ export default async function BackstageView() {
       </header>
       {/* Dashboard Entire Component */}
       <div
-        className="grid grid-rows-2 grid-cols-3 justify-center mx-8
+        className="grid grid-rows-3 grid-cols-4 justify-center mx-8
       ">
-        <h2 className="w-[283px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
-          Production Team
-        </h2>
         <div className="row-start-2 col-span-3 col-start-1 flex flex-row">
+          <h2 className="w-[500px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
+            Production Team
+          </h2>
+
           <div>
             <h3 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-medium justify-items-center mx-auto">
               In Room
@@ -325,6 +331,7 @@ export default async function BackstageView() {
                 <TableRow key={person} className="font-normal text-lg">
                   <TableCell>{person.position}</TableCell>
                   <TableCell>{person.name}</TableCell>
+                  <TableCell>{person.notes}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
