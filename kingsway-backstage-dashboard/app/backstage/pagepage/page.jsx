@@ -212,12 +212,12 @@ export default async function BackstageView() {
         className="grid grid-rows-3 grid-cols-4 justify-center mx-8
       ">
         <div className="row-start-2 col-span-3 col-start-1 flex flex-row">
-          <h2 className="w-[500px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
-            Production Team
-          </h2>
-
+          {/* IN ROOM TEAM CHART */}
           <div>
-            <h3 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-medium justify-items-center mx-auto">
+            <h2 className="text-center text-white text-[32px] font-medium">
+              Production Team
+            </h2>
+            <h3 className="text-center text-[#00bbe4] text-[32px] font-small">
               In Room
             </h3>
             <Table>
@@ -238,6 +238,7 @@ export default async function BackstageView() {
             </Table>
           </div>
           <div className="w-[10px]"></div>
+          {/* BROADCAST TEAM CHART */}
           <div>
             <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-medium justify-items-center mx-auto">
               Broadcast
@@ -260,6 +261,7 @@ export default async function BackstageView() {
             </Table>
           </div>
           <div className="w-[10px]"></div>
+          {/* ONLINE TEAM CHART */}
           <div>
             <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-medium justify-items-center mx-auto">
               Online
@@ -282,11 +284,12 @@ export default async function BackstageView() {
             </Table>
           </div>
         </div>
-        <div className="row-start-1 row-span-2 col-start-1">
+        {/* WORSHIP TEAM CHART */}
+        <div className="row-start-1 col-span-2 col-start-1 flex shrink flex-col">
           <h2 className="w-[500px] h-[50px] text-center text-white text-[32px] font-medium justify-items-center mx-auto">
             Worship Team
           </h2>
-          <Table>
+          <Table className="w-[700px] h-[50px]">
             <TableHeader>
               <TableRow className="font-normal text-lg">
                 <TableHead>Role</TableHead>
