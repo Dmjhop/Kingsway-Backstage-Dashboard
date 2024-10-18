@@ -32,6 +32,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import otherstyles from "@/styles/otherstyles.module.css"
+import Image from "next/image"
+import backImage from "@/public/backstagebackground.png"
 
 export default async function BackstageView() {
   const myHeaders = new Headers()
@@ -326,216 +329,228 @@ export default async function BackstageView() {
 
   return (
     <div>
-      {/* Header Component */}
-      <header className=" text-[#00bbe4] text-5xl font-black flex flex-row justify-between mx-8 py-8">
-        <h1 className="font-extrabold lg:text-5xl">
-          Kingsway Worship Dashboard
-        </h1>
-        {dateOfService.map((dispDate) => (
-          <h2 key={dispDate} className="font-extrabold lg:text-5xl">
-            {dispDate.todayDate}
-          </h2>
-        ))}
-      </header>
-      {/* Dashboard Entire Component */}
-      <div
-        className="grid gap-1 grid-rows-2 grid-cols-3 mx-8 mt-5
+      <div>
+        {/* Header Component */}
+        <header className=" text-[#00bbe4] text-5xl font-black flex flex-row justify-between mx-8 py-8">
+          <h1 className="font-extrabold lg:text-5xl">
+            Kingsway Church Worship Dashboard
+          </h1>
+          {dateOfService.map((dispDate) => (
+            <h2 key={dispDate} className="font-extrabold lg:text-5xl">
+              {dispDate.todayDate}
+            </h2>
+          ))}
+        </header>
+        {/* Dashboard Entire Component */}
+        <div
+          className="grid gap-1 grid-rows-2 grid-cols-3 mx-8 mt-5
       ">
-        {/* <h2 className="text-center text-white text-[32px] font-medium">
+          {/* <h2 className="text-center text-white text-[32px] font-medium">
             Production Team
           </h2> */}
 
-        {/* IN ROOM TEAM CHART */}
-        <div className="row-start-2 col-start-1 flex flex-col">
-          <h3 className="text-center text-[#00bbe4] text-[32px] font-bold">
-            In Room
-          </h3>
-          <Table className="">
-            <TableHeader>
-              <TableRow className="font-normal text-xl">
-                <TableHead>Person</TableHead>
-                <TableHead className="text-center">Role</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {inRoomProductionPeopleList.map((person) => (
-                <TableRow key={person} className="font-normal text-xl">
-                  <TableCell className="font-normal ">{person.name}</TableCell>
-                  <TableCell className="text-center">
-                    {person.position}
-                  </TableCell>
+          {/* IN ROOM TEAM CHART */}
+          <div className="row-start-2 col-start-1 flex flex-col">
+            <h3 className="text-center text-[#00bbe4] text-[32px] font-bold">
+              In Room
+            </h3>
+            <Table className="">
+              <TableHeader>
+                <TableRow className="font-normal text-xl">
+                  <TableHead>Person</TableHead>
+                  <TableHead className="text-center">Role</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHeader>
+              <TableBody>
+                {inRoomProductionPeopleList.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl">
+                    <TableCell className="font-normal ">
+                      {person.name}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.position}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
 
-        {/* BROADCAST TEAM CHART */}
-        <div className="row-start-2 col-start-2 flex shrink flex-col">
-          <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
-            Broadcast
-          </h2>
-          <Table className="">
-            <TableHeader>
-              <TableRow className="font-normal text-xl">
-                <TableHead>Person</TableHead>
-                <TableHead className="text-center">Role</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {broadcastProductionPeopleList.map((person) => (
-                <TableRow key={person} className="font-normal text-xl">
-                  <TableCell className="font-normal text-xl">
-                    {person.name}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {person.position}
-                  </TableCell>
+          {/* BROADCAST TEAM CHART */}
+          <div className="row-start-2 col-start-2 flex shrink flex-col">
+            <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
+              Broadcast
+            </h2>
+            <Table className="">
+              <TableHeader>
+                <TableRow className="font-normal text-xl">
+                  <TableHead>Person</TableHead>
+                  <TableHead className="text-center">Role</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHeader>
+              <TableBody>
+                {broadcastProductionPeopleList.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl">
+                    <TableCell className="font-normal text-xl">
+                      {person.name}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.position}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
 
-        {/* ONLINE TEAM CHART */}
-        <div className=" row-start-2 col-start-3">
-          <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
-            Online
-          </h2>
-          <Table>
-            <TableHeader className="font-normal text-xl">
-              <TableRow>
-                <TableHead>Person</TableHead>
-                <TableHead className="text-center">Role</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {sortedOnlineProductionPeopleList.map((person) => (
-                <TableRow key={person} className="font-normal text-xl">
-                  <TableCell className="font-normal text-xl">
-                    {person.name}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {person.position}
-                  </TableCell>
+          {/* ONLINE TEAM CHART */}
+          <div className=" row-start-2 col-start-3">
+            <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
+              Online
+            </h2>
+            <Table>
+              <TableHeader className="font-normal text-xl">
+                <TableRow>
+                  <TableHead>Person</TableHead>
+                  <TableHead className="text-center">Role</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHeader>
+              <TableBody>
+                {sortedOnlineProductionPeopleList.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl">
+                    <TableCell className="font-normal text-xl">
+                      {person.name}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.position}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
 
-        {/* WORSHIP TEAM CHART */}
-        <div className="row-start-1 col-start-1 flex shrink flex-col">
-          <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-            Vocals
-          </h2>
-          <Table className="">
-            <TableHeader>
-              <TableRow className="font-normal text-xl">
-                <TableHead>Person</TableHead>
-                {/* <TableHead>Role</TableHead> */}
-                <TableHead className="text-center">VOX/IEM/MD</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {vocalList.map((person) => (
-                <TableRow key={person} className="font-normal text-xl">
-                  <TableCell className="font-normal text-xl">
-                    {person.name}
-                  </TableCell>
-                  {/* <TableCell>{person.position}</TableCell> */}
-                  <TableCell className="text-center">{person.notes}</TableCell>
+          {/* WORSHIP TEAM CHART */}
+          <div className="row-start-1 col-start-1 flex shrink flex-col">
+            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              Vocals
+            </h2>
+            <Table className="">
+              <TableHeader>
+                <TableRow className="font-normal text-xl">
+                  <TableHead>Person</TableHead>
+                  {/* <TableHead>Role</TableHead> */}
+                  <TableHead className="text-center">VOX/IEM/MD</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-        {/* BAND INFO CHART */}
-        <div className="row-start-1 col-start-2 flex shrink flex-col">
-          <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-            Band
-          </h2>
-          <Table className="">
-            <TableHeader>
-              <TableRow className="font-normal text-xl">
-                <TableHead>Person</TableHead>
-                <TableHead className="text-center">Instrument</TableHead>
-                <TableHead className="text-center">IEM/Inst Pack</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {sortedBand.map((person) => (
-                <TableRow key={person} className="font-normal text-xl ">
-                  <TableCell className="font-normal ">{person.name}</TableCell>
-                  <TableCell className="text-center">
-                    {person.position}
-                  </TableCell>
-                  <TableCell className="text-center">{person.notes}</TableCell>
+              </TableHeader>
+              <TableBody>
+                {vocalList.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl">
+                    <TableCell className="font-normal text-xl">
+                      {person.name}
+                    </TableCell>
+                    {/* <TableCell>{person.position}</TableCell> */}
+                    <TableCell className="text-center">
+                      {person.notes}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          {/* BAND INFO CHART */}
+          <div className="row-start-1 col-start-2 flex shrink flex-col">
+            <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              Band
+            </h2>
+            <Table className="">
+              <TableHeader>
+                <TableRow className="font-normal text-xl">
+                  <TableHead>Person</TableHead>
+                  <TableHead className="text-center">Instrument</TableHead>
+                  <TableHead className="text-center">IEM/Inst Pack</TableHead>
                 </TableRow>
-              ))}
-              {filteredOrchestra.map((person) => (
-                <TableRow key={person} className="font-normal text-xl">
-                  <TableCell className="font-normal text-xl">
-                    {person.name}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {person.position}
-                  </TableCell>
-                  <TableCell className="text-center">{person.notes}</TableCell>
+              </TableHeader>
+              <TableBody>
+                {sortedBand.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl ">
+                    <TableCell className="font-normal ">
+                      {person.name}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.position}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.notes}
+                    </TableCell>
+                  </TableRow>
+                ))}
+                {filteredOrchestra.map((person) => (
+                  <TableRow key={person} className="font-normal text-xl">
+                    <TableCell className="font-normal text-xl">
+                      {person.name}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.position}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {person.notes}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          {/* SERVICE INFO CHART */}
+          <div className="row-start-1 col-start-3 ">
+            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              Service Info
+            </h2>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead></TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-        {/* SERVICE INFO CHART */}
-        <div className="row-start-1 col-start-3 ">
-          <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-            Service Info
-          </h2>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead></TableHead>
-              </TableRow>
-              {/* <TableRow className="font-normal text-lg">
+                {/* <TableRow className="font-normal text-lg">
                 <TableHead>Category</TableHead>
                 <TableHead>Info</TableHead>
               </TableRow> */}
-            </TableHeader>
-            <TableBody className="font-normal text-xl">
-              <TableRow className="font-normal ">
-                <TableCell>Sermon Series</TableCell>
-                <TableCell className="text-center">
-                  {currentService.data[0].attributes.series_title}
-                </TableCell>
-              </TableRow>
-              <TableRow className="font-normal ">
-                <TableCell>Sermon Title</TableCell>
-                <TableCell className="text-center">
-                  {currentService.data[0].attributes.title}
-                </TableCell>
-              </TableRow>
-              {campusPeopleList.map((person) => (
-                <TableRow key={person} className="font-normal ">
-                  <TableCell>{person.position}</TableCell>
-                  <TableCell className="text-center">{person.name}</TableCell>
-                  <TableCell>{person.notes}</TableCell>
+              </TableHeader>
+              <TableBody className="font-normal text-xl">
+                <TableRow className="font-normal ">
+                  <TableCell>Sermon Series</TableCell>
+                  <TableCell className="text-center">
+                    {currentService.data[0].attributes.series_title}
+                  </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+                <TableRow className="font-normal ">
+                  <TableCell>Sermon Title</TableCell>
+                  <TableCell className="text-center">
+                    {currentService.data[0].attributes.title}
+                  </TableCell>
+                </TableRow>
+                {campusPeopleList.map((person) => (
+                  <TableRow key={person} className="font-normal ">
+                    <TableCell>{person.position}</TableCell>
+                    <TableCell className="text-center">{person.name}</TableCell>
+                    <TableCell>{person.notes}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          {/* MD Assignments Component */}
+
+          {/* Vocal Assignments Component */}
+
+          {/* In Ear Monitors Assignments Component */}
+
+          {/* Production Team Component */}
+
+          {/* Wired IEMs Component */}
+
+          {/* Lower 3rd Row */}
         </div>
-        {/* MD Assignments Component */}
-
-        {/* Vocal Assignments Component */}
-
-        {/* In Ear Monitors Assignments Component */}
-
-        {/* Production Team Component */}
-
-        {/* Wired IEMs Component */}
-
-        {/* Lower 3rd Row */}
       </div>
     </div>
   )
