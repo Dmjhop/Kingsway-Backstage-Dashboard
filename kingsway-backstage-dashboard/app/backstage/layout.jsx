@@ -4,7 +4,7 @@ import clsx from "clsx"
 
 export default function BackstageTVLayout({ children }) {
   return (
-    <div className="w-full h-full backPic">
+    <div className="w-[100vw] h-[100vh] backPic">
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
