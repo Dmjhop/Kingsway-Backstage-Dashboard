@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && node custom-server.js",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "next start && NODE_ENV=production node custom-server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,7 +23,7 @@
     "faunadb": "^4.8.0",
     "lucide-react": "^0.316.0",
     "next": "^14.2.11",
-    "next-auth": "^4.24.5",
+    "next-auth": "^4.24.8",
     "next-themes": "^0.2.1",
     "nodemailer": "^6.9.9",
     "prisma": "^5.9.1",
@@ -33,6 +33,7 @@
     "react-resizable-panels": "^1.0.10",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "websocket": "^1.0.35",
     "zod": "^3.22.4"
   },
   "devDependencies": {
