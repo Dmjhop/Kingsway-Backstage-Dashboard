@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev && node custom-server.js",
-    "build": "prisma generate && next build",
-    "start": "next start && NODE_ENV=production node custom-server.js",
+    "dev": "next dev ",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
