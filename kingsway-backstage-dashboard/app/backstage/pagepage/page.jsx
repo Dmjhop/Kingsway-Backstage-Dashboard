@@ -158,6 +158,7 @@ export default async function BackstageView() {
     }))
     console.log(worshipPeopleList)
   } else {
+    worshipPeopleList = []
     console.error("pcoWORSHIPData is undefined or empty")
   }
 
@@ -171,6 +172,7 @@ export default async function BackstageView() {
     }))
     console.log(bandPeopleList)
   } else {
+    bandPeopleList = []
     console.error("pcoBANDData is undefined or empty")
   }
   // ! ------------ ORCHESTRA TEAM DATA ----------------
@@ -187,6 +189,7 @@ export default async function BackstageView() {
     }))
     console.log(orchestraPeopleList)
   } else {
+    orchestraPeopleList = []
     console.error("pcoORCHESTRAData is undefined or empty")
   }
 
@@ -204,6 +207,7 @@ export default async function BackstageView() {
     }))
     // console.log(productionPeopleList)
   } else {
+    productionPeopleList = []
     console.error("pcoPRODUCTIONData is undefined or empty")
   }
 
@@ -221,6 +225,7 @@ export default async function BackstageView() {
     }))
     console.log(campusPeopleList)
   } else {
+    campusPeopleList = []
     console.error("pcoCAMPUSData is undefined or empty")
   }
 
@@ -529,7 +534,7 @@ export default async function BackstageView() {
                     {currentService.data[0].attributes.title}
                   </TableCell>
                 </TableRow>
-                {campusPeopleList.map((person) => (
+                {filteredCampus.map((person) => (
                   <TableRow key={person} className="font-normal ">
                     <TableCell>{person.position}</TableCell>
                     <TableCell className="text-center">{person.name}</TableCell>
