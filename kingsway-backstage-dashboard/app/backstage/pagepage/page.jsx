@@ -159,14 +159,7 @@ async function getCampus() {
 //     }
 //   }
 
-export default async function BackstageView({
-  startPlan,
-  startWorship,
-  startBand,
-  startOrchestra,
-  startProduction,
-  startCampus,
-}) {
+export default async function BackstageView() {
   // 5674102
   let todayDate = await getService()
   worshipPCOData = await getWorship()
