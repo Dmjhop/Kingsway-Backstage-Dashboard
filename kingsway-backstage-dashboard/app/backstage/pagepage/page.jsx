@@ -36,37 +36,38 @@ import otherstyles from "@/styles/otherstyles.module.css"
 import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
 
-export default async function BackstageView() {
-  const myHeaders = new Headers()
-  myHeaders.append(
-    "Authorization",
-    "Basic NmQzZTFjNWUyYzQ1ZjM5ZjVhZjUzMTlkZTM5MzFiOTlkZTczOTc1OGEyMDUzOTY3MjFiZjc4MmZlMzExZDI4OTpwY29fcGF0X2UxZGY1YzZmNmUxODBmNDEwNmI5YmI2YTI3ZmFjMmNmNjNkMmQxZDk0NDc3ZTZjYTZhNmI4ODI5NzMzZTA4OGQxY2FmM2EyNQ=="
-  )
+const myHeaders = new Headers()
+myHeaders.append(
+  "Authorization",
+  "Basic NmQzZTFjNWUyYzQ1ZjM5ZjVhZjUzMTlkZTM5MzFiOTlkZTczOTc1OGEyMDUzOTY3MjFiZjc4MmZlMzExZDI4OTpwY29fcGF0X2UxZGY1YzZmNmUxODBmNDEwNmI5YmI2YTI3ZmFjMmNmNjNkMmQxZDk0NDc3ZTZjYTZhNmI4ODI5NzMzZTA4OGQxY2FmM2EyNQ=="
+)
 
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-    cache: "no-store",
-  }
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+  cache: "no-store",
+}
 
-  let worshipPCOData
-  let bandPCOData
-  let orchestraPCOData
-  let campusPeopleData
-  let productionPCOData
-  let worshipPeopleList
-  let bandPeopleList
-  let orchestraPeopleList
-  let campusPeopleList
-  let productionPeopleList
-  let currentService
-  let dateOfService
-  let inRoomProductionPeopleList
-  let broadcastProductionPeopleList
-  let onlineProductionPeopleList
+let worshipPCOData
+let bandPCOData
+let orchestraPCOData
+let campusPeopleData
+let productionPCOData
+let worshipPeopleList
+let bandPeopleList
+let orchestraPeopleList
+let campusPeopleList
+let productionPeopleList
+let currentService
+let dateOfService
+let inRoomProductionPeopleList
+let broadcastProductionPeopleList
+let onlineProductionPeopleList
 
-  //? API CALL FOR THE CURRENT SERVICE ID IN THE LIST
+//? API CALL FOR THE CURRENT SERVICE ID IN THE LIST
+
+async function getService() {
   try {
     const response = await fetch(
       "https://api.planningcenteronline.com/services/v2/service_types/285406/plans?filter=future&per_page=1",
@@ -78,12 +79,10 @@ export default async function BackstageView() {
     console.error(error)
   }
 
-  // let bookName
-  //   for (let i = 0; i < booksOfBible.length; i++) {
-  //     if (booksOfBible[i].value === book) {
-  //       bookName = booksOfBible[i].label
-  //     }
-  //   }
+  return currentService
+}
+
+async function getWorship() {
   // ? API CALL FOR WORSHIP TEAM
   try {
     const response = await fetch(
@@ -94,7 +93,10 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+  return worshipPCOData
+}
 
+async function getBand() {
   // ? API CALL FOR BAND TEAM
   try {
     const response = await fetch(
@@ -105,6 +107,10 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+  return bandPCOData
+}
+
+async function getOrchestra() {
   // ? API CALL FOR ORCHESTRA TEAM
   try {
     const response = await fetch(
@@ -115,7 +121,10 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+  return orchestraPCOData
+}
 
+async function getProduction() {
   // ? API CALL FOR PRODUCTION TEAM
   try {
     const response = await fetch(
@@ -126,7 +135,10 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+  return productionPCOData
+}
 
+async function getCampus() {
   // ? API CALL FOR SPEAKER | SERVICE HOST | POINT PERSON
   try {
     const response = await fetch(
@@ -137,8 +149,31 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+  return campusPeopleData
+}
 
+// let bookName
+//   for (let i = 0; i < booksOfBible.length; i++) {
+//     if (booksOfBible[i].value === book) {
+//       bookName = booksOfBible[i].label
+//     }
+//   }
+
+export default async function BackstageView({
+  startPlan,
+  startWorship,
+  startBand,
+  startOrchestra,
+  startProduction,
+  startCampus,
+}) {
   // 5674102
+  let todayDate = await getService()
+  worshipPCOData = await getWorship()
+  bandPCOData = await getBand()
+  orchestraPCOData = await getOrchestra()
+  productionPCOData = await getProduction()
+  campusPeopleData = await getCampus()
 
   if (currentService && currentService.data && currentService.data.length > 0) {
     dateOfService = currentService.data.map((item) => ({
@@ -146,6 +181,7 @@ export default async function BackstageView() {
     }))
     console.log(dateOfService)
   } else {
+    todayDate = []
     console.error("pcoDateData is undefined or empty")
   }
 
