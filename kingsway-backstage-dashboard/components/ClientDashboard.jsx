@@ -276,27 +276,29 @@ export default function ClientComponent({
     <div>
       <div>
         {/* Header Component */}
-        <header className=" text-[#00bbe4] text-5xl font-black flex flex-row justify-between mx-8 py-8">
-          <h1 className="font-extrabold lg:text-5xl">
+        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col justify-between mx-8 py-8">
+          <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
           {dateOfService.map((dispDate) => (
-            <h2 key={dispDate} className="font-extrabold lg:text-5xl">
+            <h2
+              key={dispDate}
+              className="text-2xl text-center lg:font-extrabold lg:text-5xl">
               {dispDate.todayDate}
             </h2>
           ))}
         </header>
         {/* Dashboard Entire Component */}
         <div
-          className="grid gap-1 grid-rows-2 grid-cols-3 mx-8 mt-5
+          className="flex flex-col lg:grid lg:gap-1 lg:grid-rows-2 lg:grid-cols-3 lg:mx-8 lg:mt-5
       ">
           {/* <h2 className="text-center text-white text-[32px] font-medium">
             Production Team
           </h2> */}
 
           {/* IN ROOM TEAM CHART */}
-          <div className="row-start-2 col-start-1 flex flex-col">
-            <h3 className="text-center text-[#00bbe4] text-[32px] font-bold">
+          <div className="row-start-2 col-start-1 flex flex-col order-4">
+            <h3 className="text-[32px] text-center text-[#00bbe4] lg:text-[32px] font-bold">
               In Room
             </h3>
             <Table className="">
@@ -322,7 +324,7 @@ export default function ClientComponent({
           </div>
 
           {/* BROADCAST TEAM CHART */}
-          <div className="row-start-2 col-start-2 flex shrink flex-col">
+          <div className="row-start-2 col-start-2 flex shrink flex-col order-5">
             <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
               Broadcast
             </h2>
@@ -349,7 +351,7 @@ export default function ClientComponent({
           </div>
 
           {/* ONLINE TEAM CHART */}
-          <div className=" row-start-2 col-start-3">
+          <div className=" row-start-2 col-start-3 flex shrink flex-col order-6">
             <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
               Online
             </h2>
@@ -376,7 +378,7 @@ export default function ClientComponent({
           </div>
 
           {/* WORSHIP TEAM CHART */}
-          <div className="row-start-1 col-start-1 flex shrink flex-col">
+          <div className="row-start-1 col-start-1 flex shrink flex-col order-2">
             <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
               Vocals
             </h2>
@@ -404,7 +406,7 @@ export default function ClientComponent({
             </Table>
           </div>
           {/* BAND INFO CHART */}
-          <div className="row-start-1 col-start-2 flex shrink flex-col">
+          <div className="row-start-1 col-start-2 flex shrink flex-col order-3">
             <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
               Band
             </h2>
@@ -449,7 +451,7 @@ export default function ClientComponent({
             </Table>
           </div>
           {/* SERVICE INFO CHART */}
-          <div className="row-start-1 col-start-3 ">
+          <div className="row-start-1 col-start-3 flex shrink flex-col  order-1">
             <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
               Service Info
             </h2>
