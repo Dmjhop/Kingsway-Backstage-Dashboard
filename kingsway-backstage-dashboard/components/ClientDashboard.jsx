@@ -276,7 +276,7 @@ export default function ClientComponent({
     <div>
       <div>
         {/* Header Component */}
-        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-8 py-8">
+        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-8">
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
