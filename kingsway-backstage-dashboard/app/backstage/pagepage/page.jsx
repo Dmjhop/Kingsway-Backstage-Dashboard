@@ -36,6 +36,7 @@ import {
 import otherstyles from "@/styles/otherstyles.module.css"
 import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
+import { revalidateDashboard } from "@/app/actions/revalidate"
 import ClientDashboard from "@/components/ClientDashboard"
 
 const myHeaders = new Headers()
@@ -48,7 +49,7 @@ const requestOptions = {
   method: "GET",
   headers: myHeaders,
   redirect: "follow",
-  next: { revalidate: 10 },
+  cache: "force-cache",
 }
 
 let worshipPCOData = []
@@ -134,6 +135,8 @@ export default async function BackstageView() {
   } catch (error) {
     console.error(error)
   }
+
+  await revalidateDashboard()
 
   return (
     <ClientDashboard

@@ -54,7 +54,7 @@ export default function ClientComponent({
   const [production, setProduction] = useState(initialProduction)
   const [campus, setCampus] = useState(initialCampus)
 
-  console.log(initialPlan)
+  // console.log(initialPlan)
   let worshipPCOData = worship
   let bandPCOData = band
   let orchestraPCOData = orchestra
@@ -75,7 +75,7 @@ export default function ClientComponent({
   useEffect(() => {
     const intervalId = setInterval(() => {
       location.reload()
-    }, 90000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
+    }, 30000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
 
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
@@ -84,7 +84,7 @@ export default function ClientComponent({
     dateOfService = currentService.data.map((item) => ({
       todayDate: item.attributes.dates,
     }))
-    console.log(dateOfService)
+    // console.log(dateOfService)
   } else {
     todayDate = []
     console.error("pcoDateData is undefined or empty")
@@ -98,7 +98,7 @@ export default function ClientComponent({
       notes: member.attributes.notes,
       status: member.attributes.status,
     }))
-    console.log(worshipPeopleList)
+    // console.log(worshipPeopleList)
   } else {
     worshipPeopleList = []
     console.error("pcoWORSHIPData is undefined or empty")
@@ -112,7 +112,7 @@ export default function ClientComponent({
       notes: member.attributes.notes,
       status: member.attributes.status,
     }))
-    console.log(bandPeopleList)
+    // console.log(bandPeopleList)
   } else {
     bandPeopleList = []
     console.error("pcoBANDData is undefined or empty")
@@ -129,7 +129,7 @@ export default function ClientComponent({
       notes: member.attributes.notes,
       status: member.attributes.status,
     }))
-    console.log(orchestraPeopleList)
+    // console.log(orchestraPeopleList)
   } else {
     orchestraPeopleList = []
     console.error("pcoORCHESTRAData is undefined or empty")
@@ -165,7 +165,7 @@ export default function ClientComponent({
       notes: member.attributes.notes,
       status: member.attributes.status,
     }))
-    console.log(campusPeopleList)
+    // console.log(campusPeopleList)
   } else {
     campusPeopleList = []
     console.error("pcoCAMPUSData is undefined or empty")
