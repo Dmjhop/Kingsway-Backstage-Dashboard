@@ -9,7 +9,7 @@ import otherstyles from "@/styles/otherstyles.module.css"
 
 export default function BackstageTVLayout({ children }) {
   return (
-    <div className="w-[100vw] h-[100vh] backPic">
+    <div className="w-[100vw] h-[100vh] ">
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
