@@ -274,7 +274,7 @@ export default function ClientComponent({
 
   return (
     <div>
-      <div>
+      <div className="max-h-screen">
         {/* Header Component */}
         <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
@@ -290,7 +290,7 @@ export default function ClientComponent({
         </header>
         {/* Dashboard Entire Component */}
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-rows-2 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6
+          className="flex flex-col lg:grid lg:gap-1 lg:grid-rows-2 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10
       ">
           {/* <h2 className="text-center text-white text-[32px] font-medium">
             Production Team
@@ -303,14 +303,14 @@ export default function ClientComponent({
             </h3>
             <Table className="">
               <TableHeader>
-                <TableRow className="font-normal text-xl">
+                <TableRow className="font-normal text-2xl">
                   <TableHead>Person</TableHead>
                   <TableHead className="text-center">Role</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {inRoomProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl">
+                  <TableRow key={person} className="font-normal text-2xl">
                     <TableCell className="font-normal ">
                       {person.name}
                     </TableCell>
@@ -328,17 +328,17 @@ export default function ClientComponent({
             <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
               Broadcast
             </h2>
-            <Table className="">
+            <Table className="h-[100px] ">
               <TableHeader>
-                <TableRow className="font-normal text-xl">
+                <TableRow className="font-normal text-2xl">
                   <TableHead>Person</TableHead>
                   <TableHead className="text-center">Role</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {broadcastProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl">
-                    <TableCell className="font-normal text-xl">
+                  <TableRow key={person} className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -356,7 +356,7 @@ export default function ClientComponent({
               Online
             </h2>
             <Table>
-              <TableHeader className="font-normal text-xl">
+              <TableHeader className="font-normal text-2xl">
                 <TableRow>
                   <TableHead>Person</TableHead>
                   <TableHead className="text-center">Role</TableHead>
@@ -364,8 +364,8 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {sortedOnlineProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl">
-                    <TableCell className="font-normal text-xl">
+                  <TableRow key={person} className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -384,7 +384,7 @@ export default function ClientComponent({
             </h2>
             <Table className="">
               <TableHeader>
-                <TableRow className="font-normal text-xl">
+                <TableRow className="font-normal text-2xl">
                   <TableHead>Person</TableHead>
                   {/* <TableHead>Role</TableHead> */}
                   <TableHead className="text-center">VOX|IEM|MD</TableHead>
@@ -392,8 +392,8 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {vocalList.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl">
-                    <TableCell className="font-normal text-xl">
+                  <TableRow key={person} className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
@@ -412,7 +412,7 @@ export default function ClientComponent({
             </h2>
             <Table className="">
               <TableHeader>
-                <TableRow className="font-normal text-xl">
+                <TableRow className="font-normal text-2xl">
                   <TableHead>Person</TableHead>
                   <TableHead className="text-center">Instrument</TableHead>
                   <TableHead className="text-center">
@@ -422,7 +422,7 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {sortedBand.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl ">
+                  <TableRow key={person} className="font-normal text-2xl ">
                     <TableCell className="font-normal ">
                       {person.name}
                     </TableCell>
@@ -435,7 +435,7 @@ export default function ClientComponent({
                   </TableRow>
                 ))}
                 {filteredOrchestra.map((person) => (
-                  <TableRow key={person} className="font-normal text-xl">
+                  <TableRow key={person} className="font-normal text-2xl">
                     <TableCell className="font-normal text-xl">
                       {person.name}
                     </TableCell>
@@ -465,7 +465,7 @@ export default function ClientComponent({
                 <TableHead>Info</TableHead>
               </TableRow> */}
               </TableHeader>
-              <TableBody className="font-normal text-xl">
+              <TableBody className="font-normal text-2xl">
                 <TableRow className="font-normal ">
                   <TableCell>Sermon Series</TableCell>
                   <TableCell className="text-center">
