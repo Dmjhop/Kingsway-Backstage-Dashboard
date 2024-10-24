@@ -48,7 +48,7 @@ const requestOptions = {
   method: "GET",
   headers: myHeaders,
   redirect: "follow",
-  cache: "no-store",
+  next: { revalidate: 10 },
 }
 
 let worshipPCOData = []
