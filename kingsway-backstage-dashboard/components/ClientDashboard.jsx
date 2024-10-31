@@ -93,6 +93,7 @@ export default function ClientComponent({
   // ! WORSHIP TEAM DATA
   if (worshipPCOData && worshipPCOData.data && worshipPCOData.data.length > 0) {
     worshipPeopleList = worshipPCOData.data.map((member) => ({
+      id: member.id,
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
@@ -107,6 +108,7 @@ export default function ClientComponent({
   // ! -------------- BAND TEAM DATA ----------------
   if (bandPCOData && bandPCOData.data && bandPCOData.data.length > 0) {
     bandPeopleList = bandPCOData.data.map((member) => ({
+      id: member.id,
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
@@ -124,6 +126,7 @@ export default function ClientComponent({
     orchestraPCOData.data.length > 0
   ) {
     orchestraPeopleList = orchestraPCOData.data.map((member) => ({
+      id: member.id,
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
@@ -142,6 +145,7 @@ export default function ClientComponent({
     productionPCOData.data.length > 0
   ) {
     productionPeopleList = productionPCOData.data.map((member) => ({
+      id: member.id,
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
@@ -160,6 +164,7 @@ export default function ClientComponent({
     campusPeopleData.data.length > 0
   ) {
     campusPeopleList = campusPeopleData.data.map((member) => ({
+      id: member.id,
       name: member.attributes.name,
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
@@ -177,6 +182,23 @@ export default function ClientComponent({
   )
   // ? ALPHABETIZING THEM
   let sortedVocalList = filteredVocals.sort((a, b) => {
+    // const getNumberFromNotes = (notes) => {
+    //   const match = notes.match(/Vox (\d+)/)
+    //   return match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER
+    // }
+
+    // const aNumber = getNumberFromNotes(a.notes)
+    // const bNumber = getNumberFromNotes(b.notes)
+
+    // return aNumber - bNumber
+    // let aVox = parseInt(a.notes.match(/Vox (\d+)/)?.[1], 10)
+    // let bVox = parseInt(b.notes.match(/Vox (\d+)/)?.[1], 10)
+    // console.log(aVox)
+
+    // // Compare the Vox numbers
+    // if (aVox < bVox) return -1
+    // if (aVox > bVox) return 1
+
     if (a.notes < b.notes) return -1
     if (a.notes > b.notes) return 1
     return 0
@@ -268,9 +290,42 @@ export default function ClientComponent({
     }
   )
 
+  const broadcastPositions = [
+    "Broadcast Coordinator",
+    "Broadcast Audio",
+    "Video Switcher",
+    "Camera",
+  ]
+
+  const inRoomPositions = [
+    "In Room Tech Coordinator",
+    "FOH Sound",
+    "ProPresenter",
+    "Lights",
+  ]
+
+  const sortedBroadcastProductionPeopleList =
+    broadcastProductionPeopleList.sort((a, b) => {
+      const posA = broadcastPositions.indexOf(a.position)
+      const posB = broadcastPositions.indexOf(b.position)
+      return posA - posB
+    })
+
+  const sortedInRoomProductionPeopleList = inRoomProductionPeopleList.sort(
+    (a, b) => {
+      const posA = inRoomPositions.indexOf(a.position)
+      const posB = inRoomPositions.indexOf(b.position)
+      return posA - posB
+    }
+  )
+
   campusPeopleList = campusPeopleList.filter(
     (person) => !getRidCampusVals.includes(person.position)
   )
+
+  // console.log(vocalList)
+
+  console.log(vocalList)
 
   return (
     <div>
@@ -309,8 +364,8 @@ export default function ClientComponent({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {inRoomProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl">
+                {sortedInRoomProductionPeopleList.map((person) => (
+                  <TableRow key={person.id} className="font-normal text-2xl">
                     <TableCell className="font-normal ">
                       {person.name}
                     </TableCell>
@@ -336,8 +391,8 @@ export default function ClientComponent({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {broadcastProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl">
+                {sortedBroadcastProductionPeopleList.map((person) => (
+                  <TableRow key={person.id} className="font-normal text-2xl">
                     <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
@@ -364,7 +419,7 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {sortedOnlineProductionPeopleList.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl">
+                  <TableRow key={person.id} className="font-normal text-2xl">
                     <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
@@ -392,7 +447,7 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {vocalList.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl">
+                  <TableRow key={person.id} className="font-normal text-2xl">
                     <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
@@ -422,7 +477,7 @@ export default function ClientComponent({
               </TableHeader>
               <TableBody>
                 {sortedBand.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl ">
+                  <TableRow key={person.id} className="font-normal text-2xl ">
                     <TableCell className="font-normal ">
                       {person.name}
                     </TableCell>
@@ -435,7 +490,7 @@ export default function ClientComponent({
                   </TableRow>
                 ))}
                 {filteredOrchestra.map((person) => (
-                  <TableRow key={person} className="font-normal text-2xl">
+                  <TableRow key={person.id} className="font-normal text-2xl">
                     <TableCell className="font-normal text-xl">
                       {person.name}
                     </TableCell>
@@ -479,7 +534,7 @@ export default function ClientComponent({
                   </TableCell>
                 </TableRow>
                 {filteredCampus.map((person) => (
-                  <TableRow key={person} className="font-normal ">
+                  <TableRow key={person.name} className="font-normal ">
                     <TableCell>{person.position}</TableCell>
                     <TableCell className="text-center">{person.name}</TableCell>
                     <TableCell>{person.notes}</TableCell>
