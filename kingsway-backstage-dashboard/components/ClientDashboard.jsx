@@ -38,6 +38,7 @@ import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
 
 import { useEffect, useState } from "react"
+import { revalidateDashboard } from "@/app/actions/revalidate"
 
 export default function ClientComponent({
   initialPlan,
@@ -76,7 +77,7 @@ export default function ClientComponent({
     const intervalId = setInterval(() => {
       location.reload()
     }, 30000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
-
+    revalidateDashboard()
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
 
