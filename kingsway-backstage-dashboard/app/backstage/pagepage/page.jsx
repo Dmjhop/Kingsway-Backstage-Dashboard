@@ -38,12 +38,10 @@ import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
 // import { revalidateDashboard } from "@/app/actions/revalidate"
 import ClientDashboard from "@/components/ClientDashboard"
+import "dotenv/config"
 
 const myHeaders = new Headers()
-myHeaders.append(
-  "Authorization",
-  "Basic NmQzZTFjNWUyYzQ1ZjM5ZjVhZjUzMTlkZTM5MzFiOTlkZTczOTc1OGEyMDUzOTY3MjFiZjc4MmZlMzExZDI4OTpwY29fcGF0X2UxZGY1YzZmNmUxODBmNDEwNmI5YmI2YTI3ZmFjMmNmNjNkMmQxZDk0NDc3ZTZjYTZhNmI4ODI5NzMzZTA4OGQxY2FmM2EyNQ=="
-)
+myHeaders.append("Authorization", process.env.API_SECRET)
 
 const requestOptions = {
   method: "GET",
