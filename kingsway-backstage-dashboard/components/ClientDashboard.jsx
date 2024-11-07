@@ -200,8 +200,8 @@ export default function ClientComponent({
     // if (aVox < bVox) return -1
     // if (aVox > bVox) return 1
 
-    if (a.notes > b.notes) return -1
-    if (a.notes < b.notes) return 1
+    if (a.notes < b.notes) return -1
+    if (a.notes > b.notes) return 1
     return 0
   })
 
