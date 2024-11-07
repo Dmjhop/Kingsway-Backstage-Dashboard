@@ -99,6 +99,7 @@ export default function ClientComponent({
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
       status: member.attributes.status,
+      photo: member.attributes.photo_thumbnail,
     }))
     // console.log(worshipPeopleList)
   } else {
@@ -114,6 +115,7 @@ export default function ClientComponent({
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
       status: member.attributes.status,
+      photo: member.attributes.photo_thumbnail,
     }))
     // console.log(bandPeopleList)
   } else {
@@ -132,6 +134,7 @@ export default function ClientComponent({
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
       status: member.attributes.status,
+      photo: member.attributes.photo_thumbnail,
     }))
     // console.log(orchestraPeopleList)
   } else {
@@ -151,6 +154,7 @@ export default function ClientComponent({
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
       status: member.attributes.status,
+      photo: member.attributes.photo_thumbnail,
     }))
     // console.log(productionPeopleList)
   } else {
@@ -170,6 +174,7 @@ export default function ClientComponent({
       position: member.attributes.team_position_name,
       notes: member.attributes.notes,
       status: member.attributes.status,
+      photo: member.attributes.photo_thumbnail,
     }))
     // console.log(campusPeopleList)
   } else {
@@ -328,6 +333,11 @@ export default function ClientComponent({
 
   console.log(vocalList)
 
+  const picStyles = {
+    borderRadius: "50%",
+    boxShadow: `0px 0px 16px 3px rgb(0,187,228, 0.7)`,
+  }
+
   return (
     <div>
       <div className="max-h-screen">
@@ -367,7 +377,13 @@ export default function ClientComponent({
               <TableBody>
                 {sortedInRoomProductionPeopleList.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal ">
+                    <TableCell className="font-normal flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -394,7 +410,13 @@ export default function ClientComponent({
               <TableBody>
                 {sortedBroadcastProductionPeopleList.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -421,7 +443,13 @@ export default function ClientComponent({
               <TableBody>
                 {sortedOnlineProductionPeopleList.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -449,7 +477,13 @@ export default function ClientComponent({
               <TableBody>
                 {vocalList.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
@@ -479,7 +513,13 @@ export default function ClientComponent({
               <TableBody>
                 {sortedBand.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl ">
-                    <TableCell className="font-normal ">
+                    <TableCell className="font-normal flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -492,7 +532,13 @@ export default function ClientComponent({
                 ))}
                 {filteredOrchestra.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl">
+                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
@@ -537,7 +583,15 @@ export default function ClientComponent({
                 {filteredCampus.map((person) => (
                   <TableRow key={person.name} className="font-normal ">
                     <TableCell>{person.position}</TableCell>
-                    <TableCell className="text-center">{person.name}</TableCell>
+                    <TableCell className="text-center flex flex-row items-center gap-x-3">
+                      <Image
+                        src={person.photo}
+                        width={50}
+                        height={50}
+                        style={picStyles}
+                      />
+                      {person.name}
+                    </TableCell>
                     <TableCell>{person.notes}</TableCell>
                   </TableRow>
                 ))}
