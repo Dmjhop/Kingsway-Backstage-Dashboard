@@ -39,6 +39,7 @@ import backImage from "@/public/backstagebackground.png"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
+import defaultLayoutImg from "@/public/No Current Layout.png"
 
 export default function ClientComponent({
   initialPlan,
@@ -47,6 +48,7 @@ export default function ClientComponent({
   initialOrchestra,
   initialProduction,
   initialCampus,
+  initialLayout,
 }) {
   const [plan, setPlans] = useState(initialPlan)
   const [worship, setWorship] = useState(initialWorship)
@@ -54,6 +56,8 @@ export default function ClientComponent({
   const [orchestra, setOrchestra] = useState(initialOrchestra)
   const [production, setProduction] = useState(initialProduction)
   const [campus, setCampus] = useState(initialCampus)
+  let [stage, setStage] = useState(initialLayout)
+  const [isVisible, setIsVisible] = useState(false)
 
   // console.log(initialPlan)
   let worshipPCOData = worship
@@ -62,6 +66,11 @@ export default function ClientComponent({
   let campusPeopleData = campus
   let productionPCOData = production
   let currentService = plan
+  let stageLayout = stage
+  console.log(stageLayout)
+  let defaultStageLayout =
+    "https://ik.imagekit.io/kingswaychurch/No%20Current%20Layout.png?updatedAt=1731007921807"
+  let stageLaidOut
   let worshipPeopleList
   let bandPeopleList
   let orchestraPeopleList
@@ -79,6 +88,15 @@ export default function ClientComponent({
     }, 30000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
     revalidateDashboard()
     return () => clearInterval(intervalId) // Clear interval on component unmount
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible((prevIsVisible) => !prevIsVisible)
+    }, 15000)
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval)
   }, [])
 
   if (currentService && currentService.data && currentService.data.length > 0) {
@@ -331,11 +349,24 @@ export default function ClientComponent({
 
   // console.log(vocalList)
 
-  console.log(vocalList)
+  // console.log(vocalList)
 
   const picStyles = {
     borderRadius: "50%",
     boxShadow: `0px 0px 16px 3px rgb(0,187,228, 0.7)`,
+  }
+
+  const layoutStyles = {
+    position: "fixed",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    backgroundColor: `rgba(0, 0, 0, 0.5)`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: "1000",
   }
 
   return (
@@ -355,6 +386,17 @@ export default function ClientComponent({
           ))}
         </header>
         {/* Dashboard Entire Component */}
+        {isVisible && (
+          <div style={layoutStyles}>
+            <Image
+              src={stageLayout}
+              width={1920}
+              height={1080}
+              alt="This is the stage layout"
+            />
+          </div>
+        )}
+
         <div
           className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[570px_minmax(900px,_1fr)_100px]
       ">
@@ -383,6 +425,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -416,6 +459,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -449,6 +493,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -483,6 +528,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -519,6 +565,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -538,6 +585,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
@@ -589,6 +637,7 @@ export default function ClientComponent({
                         width={50}
                         height={50}
                         style={picStyles}
+                        alt={`This is the profile pic of ${person.name}`}
                       />
                       {person.name}
                     </TableCell>
