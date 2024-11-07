@@ -200,8 +200,8 @@ export default function ClientComponent({
     // if (aVox < bVox) return -1
     // if (aVox > bVox) return 1
 
-    if (a.notes < b.notes) return -1
-    if (a.notes > b.notes) return 1
+    if (a.notes > b.notes) return -1
+    if (a.notes < b.notes) return 1
     return 0
   })
 
@@ -492,7 +492,7 @@ export default function ClientComponent({
                 ))}
                 {filteredOrchestra.map((person) => (
                   <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-xl">
+                    <TableCell className="font-normal text-2xl">
                       {person.name}
                     </TableCell>
                     <TableCell className="text-center">
