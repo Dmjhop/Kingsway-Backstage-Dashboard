@@ -356,7 +356,7 @@ export default function ClientComponent({
         </header>
         {/* Dashboard Entire Component */}
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-rows-2 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10
+          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[570px_minmax(900px,_1fr)_100px]
       ">
           {/* <h2 className="text-center text-white text-[32px] font-medium">
             Production Team
