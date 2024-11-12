@@ -7,6 +7,7 @@ import VocalsTable from "@/components/VocalsTable"
 import OnlineProdTable from "@/components/OnlineProdTable"
 import BandTable from "@/components/BandTable"
 import BroadcastProdTable from "@/components/BroadcastProdTable"
+import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
 
 import { useEffect, useState } from "react"
@@ -371,7 +372,7 @@ export default function ClientComponent({
           </div>
         )}
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[600px_minmax(900px,_1fr)_100px]
+          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-4 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[700px_minmax(900px,_1fr)]
       ">
           {/* VOCALS TEAM CHART */}
           <VocalsTable people={vocalList} styles={picStyles} />
@@ -388,6 +389,7 @@ export default function ClientComponent({
             people={filteredCampus}
             styles={picStyles}
           />
+
           {/* IN ROOM PRODUCTION TEAM CHART */}
           <InRoomProdTable
             people={sortedInRoomProductionPeopleList}
@@ -395,6 +397,10 @@ export default function ClientComponent({
           />
           {/* BROADCAST PRODUCTION TEAM CHART */}
           <BroadcastProdTable
+            people={sortedBroadcastProductionPeopleList}
+            styles={picStyles}
+          />
+          <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
           />
