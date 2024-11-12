@@ -1,45 +1,20 @@
 "use client"
-import PersonCard from "@/components/ui/PersonCard"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import NewServiceForm from "@/components/ui/NewServiceForm"
-import SmallCardBackground from "@/components/ui/SmallCardBackground"
-import VerticalCardBackground from "@/components/ui/VerticalCardBackground"
-import LargeCardBackground from "@/components/ui/LargeCardBackground"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import otherstyles from "@/styles/otherstyles.module.css"
 import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
+import ClockComp from "@/components/ClockComp"
+import InRoomProdTable from "@/components/InRoomProdTable"
+import VocalsTable from "@/components/VocalsTable"
+import OnlineProdTable from "@/components/OnlineProdTable"
+import BandTable from "@/components/BandTable"
+import BroadcastProdTable from "@/components/BroadcastProdTable"
+import ServiceInfoTable from "@/components/ServiceInfoTable"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
 import defaultLayoutImg from "@/public/No Current Layout.png"
+
+// React Server Components
+import * as motion from "framer-motion/client"
 
 export default function ClientComponent({
   initialPlan,
@@ -57,7 +32,7 @@ export default function ClientComponent({
   const [production, setProduction] = useState(initialProduction)
   const [campus, setCampus] = useState(initialCampus)
   let [stage, setStage] = useState(initialLayout)
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
   // console.log(initialPlan)
   let worshipPCOData = worship
@@ -206,23 +181,6 @@ export default function ClientComponent({
   )
   // ? ALPHABETIZING THEM
   let sortedVocalList = filteredVocals.sort((a, b) => {
-    // const getNumberFromNotes = (notes) => {
-    //   const match = notes.match(/Vox (\d+)/)
-    //   return match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER
-    // }
-
-    // const aNumber = getNumberFromNotes(a.notes)
-    // const bNumber = getNumberFromNotes(b.notes)
-
-    // return aNumber - bNumber
-    // let aVox = parseInt(a.notes.match(/Vox (\d+)/)?.[1], 10)
-    // let bVox = parseInt(b.notes.match(/Vox (\d+)/)?.[1], 10)
-    // console.log(aVox)
-
-    // // Compare the Vox numbers
-    // if (aVox < bVox) return -1
-    // if (aVox > bVox) return 1
-
     if (a.notes < b.notes) return -1
     if (a.notes > b.notes) return 1
     return 0
@@ -377,6 +335,7 @@ export default function ClientComponent({
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
+          <ClockComp />
           {dateOfService.map((dispDate) => (
             <h2
               key={dispDate}
@@ -386,6 +345,21 @@ export default function ClientComponent({
           ))}
         </header>
         {/* Dashboard Entire Component */}
+        {/* {isVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ x: 100, opacity: 1 }}
+            transition={{ type: "spring" }}>
+            <div style={layoutStyles}>
+              <Image
+                src={stageLayout}
+                width={1920}
+                height={1080}
+                alt="This is the stage layout"
+              />
+            </div>
+          </motion.div>
+        )} */}
         {isVisible && (
           <div style={layoutStyles}>
             <Image
@@ -396,268 +370,39 @@ export default function ClientComponent({
             />
           </div>
         )}
-
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[570px_minmax(900px,_1fr)_100px]
+          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-3 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[600px_minmax(900px,_1fr)_100px]
       ">
-          {/* <h2 className="text-center text-white text-[32px] font-medium">
-            Production Team
-          </h2> */}
-
-          {/* IN ROOM TEAM CHART */}
-          <div className="row-start-2 col-start-1 flex flex-col order-4">
-            <h3 className="text-[32px] text-center text-[#00bbe4] lg:text-[32px] font-bold">
-              In Room
-            </h3>
-            <Table className="">
-              <TableHeader>
-                <TableRow className="font-normal text-2xl">
-                  <TableHead>Person</TableHead>
-                  <TableHead className="text-center">Role</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sortedInRoomProductionPeopleList.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.position}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          {/* BROADCAST TEAM CHART */}
-          <div className="row-start-2 col-start-2 flex shrink flex-col order-5">
-            <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
-              Broadcast
-            </h2>
-            <Table className="h-[100px] ">
-              <TableHeader>
-                <TableRow className="font-normal text-2xl">
-                  <TableHead>Person</TableHead>
-                  <TableHead className="text-center">Role</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sortedBroadcastProductionPeopleList.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.position}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          {/* ONLINE TEAM CHART */}
-          <div className=" row-start-2 col-start-3 flex shrink flex-col order-6">
-            <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
-              Online
-            </h2>
-            <Table>
-              <TableHeader className="font-normal text-2xl">
-                <TableRow>
-                  <TableHead>Person</TableHead>
-                  <TableHead className="text-center">Role</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sortedOnlineProductionPeopleList.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.position}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-
-          {/* WORSHIP TEAM CHART */}
-          <div className="row-start-1 col-start-1 flex shrink flex-col order-2">
-            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-              Vocals
-            </h2>
-            <Table className="">
-              <TableHeader>
-                <TableRow className="font-normal text-2xl">
-                  <TableHead>Person</TableHead>
-                  {/* <TableHead>Role</TableHead> */}
-                  <TableHead className="text-center">VOX|IEM|MD</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {vocalList.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    {/* <TableCell>{person.position}</TableCell> */}
-                    <TableCell className="text-center">
-                      {person.notes}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {/* BAND INFO CHART */}
-          <div className="row-start-1 col-start-2 flex shrink flex-col order-3">
-            <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-              Band
-            </h2>
-            <Table className="">
-              <TableHeader>
-                <TableRow className="font-normal text-2xl">
-                  <TableHead>Person</TableHead>
-                  <TableHead className="text-center">Instrument</TableHead>
-                  <TableHead className="text-center">
-                    IEM|MD|Inst Pack
-                  </TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {sortedBand.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl ">
-                    <TableCell className="font-normal flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.position}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.notes}
-                    </TableCell>
-                  </TableRow>
-                ))}
-                {filteredOrchestra.map((person) => (
-                  <TableRow key={person.id} className="font-normal text-2xl">
-                    <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.position}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {person.notes}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {/* SERVICE INFO CHART */}
-          <div className="row-start-1 col-start-3 flex shrink flex-col  order-1">
-            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
-              Service Info
-            </h2>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead></TableHead>
-                </TableRow>
-                {/* <TableRow className="font-normal text-lg">
-                <TableHead>Category</TableHead>
-                <TableHead>Info</TableHead>
-              </TableRow> */}
-              </TableHeader>
-              <TableBody className="font-normal text-2xl">
-                <TableRow className="font-normal ">
-                  <TableCell>Sermon Series</TableCell>
-                  <TableCell className="text-center">
-                    {currentService.data[0].attributes.series_title}
-                  </TableCell>
-                </TableRow>
-                <TableRow className="font-normal ">
-                  <TableCell>Sermon Title</TableCell>
-                  <TableCell className="text-center">
-                    {currentService.data[0].attributes.title}
-                  </TableCell>
-                </TableRow>
-                {filteredCampus.map((person) => (
-                  <TableRow key={person.name} className="font-normal ">
-                    <TableCell>{person.position}</TableCell>
-                    <TableCell className="text-center flex flex-row items-center gap-x-3">
-                      <Image
-                        src={person.photo}
-                        width={50}
-                        height={50}
-                        style={picStyles}
-                        alt={`This is the profile pic of ${person.name}`}
-                      />
-                      {person.name}
-                    </TableCell>
-                    <TableCell>{person.notes}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-          {/* MD Assignments Component */}
-
-          {/* Vocal Assignments Component */}
-
-          {/* In Ear Monitors Assignments Component */}
-
-          {/* Production Team Component */}
-
-          {/* Wired IEMs Component */}
-
-          {/* Lower 3rd Row */}
+          {/* VOCALS TEAM CHART */}
+          <VocalsTable people={vocalList} styles={picStyles} />
+          {/* BAND TEAM CHART */}
+          <BandTable
+            band1={sortedBand}
+            band2={filteredOrchestra}
+            styles={picStyles}
+          />
+          {/* SERVICE INFO TEAM CHART */}
+          <ServiceInfoTable
+            sermonSeriesTitle={currentService.data[0].attributes.series_title}
+            sermonTitle={currentService.data[0].attributes.title}
+            people={filteredCampus}
+            styles={picStyles}
+          />
+          {/* IN ROOM PRODUCTION TEAM CHART */}
+          <InRoomProdTable
+            people={sortedInRoomProductionPeopleList}
+            styles={picStyles}
+          />
+          {/* BROADCAST PRODUCTION TEAM CHART */}
+          <BroadcastProdTable
+            people={sortedBroadcastProductionPeopleList}
+            styles={picStyles}
+          />
+          {/* ONLINE PRODUCTION TEAM CHART */}
+          <OnlineProdTable
+            people={sortedOnlineProductionPeopleList}
+            styles={picStyles}
+          />
         </div>
       </div>
     </div>
