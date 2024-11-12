@@ -32,7 +32,7 @@ export default function ClientComponent({
   const [production, setProduction] = useState(initialProduction)
   const [campus, setCampus] = useState(initialCampus)
   let [stage, setStage] = useState(initialLayout)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
   // console.log(initialPlan)
   let worshipPCOData = worship
