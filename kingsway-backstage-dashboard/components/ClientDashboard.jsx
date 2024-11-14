@@ -65,16 +65,18 @@ export default function ClientComponent({
     revalidateDashboard()
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
+  // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible((prevIsVisible) => !prevIsVisible)
-    }, 15000)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setIsVisible((prevIsVisible) => !prevIsVisible)
+  //   }, 15000)
 
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval)
-  }, [])
+  //   // Clean up the interval on component unmount
+  //   return () => clearInterval(interval)
+  // }, [])
 
+  // * COMMENT/UNCOMMENT THIS ^^ABOVE^^ WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
   if (currentService && currentService.data && currentService.data.length > 0) {
     dateOfService = currentService.data.map((item) => ({
       todayDate: item.attributes.dates,

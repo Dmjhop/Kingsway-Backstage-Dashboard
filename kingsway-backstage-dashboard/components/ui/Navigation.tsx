@@ -9,6 +9,11 @@ import {
   RotateCw,
   Monitor,
   List,
+  Phone,
+  Search,
+  Cog,
+  Home,
+  Smartphone,
 } from "lucide-react"
 
 import { Card } from "./card"
@@ -78,90 +83,30 @@ export default function Navigation() {
             <NavigationMenuItem className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
               <Link href="/" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Home className="pr-1" />
                   Home
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 
-            {/* Services Navigation */}
+            {/* Home Navigation */}
             <NavigationMenuItem className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                        href="/services">
-                        <List className="h-6 w-6" />
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          Services
-                        </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Lets see what is happening next at Kingsway Church
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <ChevronRightSquare />
-                    <ListItem href="/services#queue" title="Services Queue">
-                      What is next in line <ChevronRightSquare />
-                    </ListItem>
-                  </li>
-                  <ListItem
-                    href="/services#recurring"
-                    title="Recurring Services">
-                    What happens each Sunday <RotateCw />
-                  </ListItem>
-                  <ListItem
-                    href="/services#add-new-service"
-                    title="Add New Service">
-                    Add a new Service here! <PlusSquare />
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
+              <Link href="/preview" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Search className="pr-1" />
+                  Preview Mode
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
 
-            {/* People Navigation */}
+            {/* Home Navigation */}
             <NavigationMenuItem className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
-              <NavigationMenuTrigger>People</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid grid-col-2 gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[1fr_.75fr]">
-                  {/* <li className="col-span-">
-                    <ListItem href="/people" title="People Home">
-                      People Home
-                    </ListItem>
-                  </li> */}
-                  <ListItem
-                    href="/people#worship-team"
-                    title="Worship Team List"
-                    className="row-start-1">
-                    Worship Team List
-                  </ListItem>
-                  <ListItem
-                    href="/people#production-team"
-                    title="Production Team List"
-                    className="">
-                    Production Team List
-                  </ListItem>
-                  <li className=" col-start-2">
-                    <NavigationMenuLink asChild>
-                      <a
-                        className="flex h-full w-full select-none flex-col  rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                        href="/people">
-                        <List className="h-6 w-6" />
-                        <div className="mb-2 mt-4 text-lg font-medium">
-                          People
-                        </div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          Manage People on the Worship & Production Teams
-                        </p>
-                      </a>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
+              <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Smartphone className="pr-1" />
+                  Mobile Mode
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
 
             {/* Backstage View Button */}
@@ -169,11 +114,19 @@ export default function Navigation() {
               <Link href="/backstage/pagepage" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   <Monitor className="pr-1" />
-                  Backstage View
+                  Backstage Mode
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem>
+            <NavigationMenuItem></NavigationMenuItem>
+            {/* Home Navigation */}
+            <NavigationMenuItem className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+              <Link href="/settings" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Cog className="pr-1" />
+                  Settings
+                </NavigationMenuLink>
+              </Link>
               <DarkModeToggle></DarkModeToggle>
             </NavigationMenuItem>
           </NavigationMenuList>
