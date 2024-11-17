@@ -9,6 +9,7 @@ import BandTable from "@/components/BandTable"
 import BroadcastProdTable from "@/components/BroadcastProdTable"
 import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
+import WeatherBlock from "@/components/WeatherBlock"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
@@ -43,7 +44,7 @@ export default function ClientComponent({
   let productionPCOData = production
   let currentService = plan
   let stageLayout = stage
-  console.log(stageLayout)
+  // console.log(stageLayout)
   let defaultStageLayout =
     "https://ik.imagekit.io/kingswaychurch/No%20Current%20Layout.png?updatedAt=1731007921807"
   let stageLaidOut
@@ -384,6 +385,8 @@ export default function ClientComponent({
             band2={filteredOrchestra}
             styles={picStyles}
           />
+          <WeatherBlock title={`CHL`}></WeatherBlock>
+          <WeatherBlock title={`GLB`}></WeatherBlock>
           {/* SERVICE INFO TEAM CHART */}
           <ServiceInfoTable
             sermonSeriesTitle={currentService.data[0].attributes.series_title}
