@@ -11,6 +11,10 @@ import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
 import WeatherBlock from "@/components/WeatherBlock"
 import VerseOfTheDay from "@/components/VerseOfTheDay"
+import WNVocalsTable from "@/components/WNVocalsTable"
+import WNBandTable from "@/components/WNBandTable"
+import OtherWNBand from "@/components/OtherWNBand"
+import WNInRoomProdTable from "@/components/WNInRoomProdTable"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
@@ -21,7 +25,7 @@ import * as motion from "framer-motion/client"
 import "dotenv/config"
 require("dotenv").config()
 
-export default function ClientComponent({
+export default function WorshipNightClientDashboard({
   initialPlan,
   initialWorship,
   initialBand,
@@ -32,18 +36,18 @@ export default function ClientComponent({
 }) {
   const [plan, setPlans] = useState(initialPlan)
   const [worship, setWorship] = useState(initialWorship)
-  const [band, setBand] = useState(initialBand)
-  const [orchestra, setOrchestra] = useState(initialOrchestra)
+  //   const [band, setBand] = useState(initialBand)
+  //   const [orchestra, setOrchestra] = useState(initialOrchestra)
   const [production, setProduction] = useState(initialProduction)
-  const [campus, setCampus] = useState(initialCampus)
+  //   const [campus, setCampus] = useState(initialCampus)
   let [stage, setStage] = useState(initialLayout)
   const [isVisible, setIsVisible] = useState(false)
 
   // console.log(initialPlan)
   let worshipPCOData = worship
-  let bandPCOData = band
-  let orchestraPCOData = orchestra
-  let campusPeopleData = campus
+  //   let bandPCOData = band
+  //   let orchestraPCOData = orchestra
+  //   let campusPeopleData = campus
   let productionPCOData = production
   let currentService = plan
   let stageLayout = stage
@@ -65,7 +69,7 @@ export default function ClientComponent({
   useEffect(() => {
     const intervalId = setInterval(() => {
       location.reload()
-    }, 44000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
+    }, 35000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
     revalidateDashboard()
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
@@ -74,7 +78,7 @@ export default function ClientComponent({
   useEffect(() => {
     const interval = setInterval(() => {
       setIsVisible((prevIsVisible) => !prevIsVisible)
-    }, 15000)
+    }, 17500)
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval)
@@ -108,39 +112,42 @@ export default function ClientComponent({
   }
 
   // ! -------------- BAND TEAM DATA ----------------
-  if (bandPCOData && bandPCOData.data && bandPCOData.data.length > 0) {
-    bandPeopleList = bandPCOData.data.map((member) => ({
-      id: member.id,
-      name: member.attributes.name,
-      position: member.attributes.team_position_name,
-      notes: member.attributes.notes,
-      status: member.attributes.status,
-      photo: member.attributes.photo_thumbnail,
-    }))
-    // console.log(bandPeopleList)
-  } else {
-    bandPeopleList = []
-    console.error("pcoBANDData is undefined or empty")
-  }
+
+  //   if (bandPCOData && bandPCOData.data && bandPCOData.data.length > 0) {
+  //     bandPeopleList = bandPCOData.data.map((member) => ({
+  //       id: member.id,
+  //       name: member.attributes.name,
+  //       position: member.attributes.team_position_name,
+  //       notes: member.attributes.notes,
+  //       status: member.attributes.status,
+  //       photo: member.attributes.photo_thumbnail,
+  //     }))
+  //     // console.log(bandPeopleList)
+  //   } else {
+  //     bandPeopleList = []
+  //     console.error("pcoBANDData is undefined or empty")
+  //   }
+
   // ! ------------ ORCHESTRA TEAM DATA ----------------
-  if (
-    orchestraPCOData &&
-    orchestraPCOData.data &&
-    orchestraPCOData.data.length > 0
-  ) {
-    orchestraPeopleList = orchestraPCOData.data.map((member) => ({
-      id: member.id,
-      name: member.attributes.name,
-      position: member.attributes.team_position_name,
-      notes: member.attributes.notes,
-      status: member.attributes.status,
-      photo: member.attributes.photo_thumbnail,
-    }))
-    // console.log(orchestraPeopleList)
-  } else {
-    orchestraPeopleList = []
-    console.error("pcoORCHESTRAData is undefined or empty")
-  }
+
+  //   if (
+  //     orchestraPCOData &&
+  //     orchestraPCOData.data &&
+  //     orchestraPCOData.data.length > 0
+  //   ) {
+  //     orchestraPeopleList = orchestraPCOData.data.map((member) => ({
+  //       id: member.id,
+  //       name: member.attributes.name,
+  //       position: member.attributes.team_position_name,
+  //       notes: member.attributes.notes,
+  //       status: member.attributes.status,
+  //       photo: member.attributes.photo_thumbnail,
+  //     }))
+  //     // console.log(orchestraPeopleList)
+  //   } else {
+  //     orchestraPeopleList = []
+  //     console.error("pcoORCHESTRAData is undefined or empty")
+  //   }
 
   // ! ---------------- PRODUCTION TEAM DATA---------------
   if (
@@ -163,24 +170,25 @@ export default function ClientComponent({
   }
 
   // ! ----------------- CAMPUS TEAM DATA -----------
-  if (
-    campusPeopleData &&
-    campusPeopleData.data &&
-    campusPeopleData.data.length > 0
-  ) {
-    campusPeopleList = campusPeopleData.data.map((member) => ({
-      id: member.id,
-      name: member.attributes.name,
-      position: member.attributes.team_position_name,
-      notes: member.attributes.notes,
-      status: member.attributes.status,
-      photo: member.attributes.photo_thumbnail,
-    }))
-    // console.log(campusPeopleList)
-  } else {
-    campusPeopleList = []
-    console.error("pcoCAMPUSData is undefined or empty")
-  }
+
+  //   if (
+  //     campusPeopleData &&
+  //     campusPeopleData.data &&
+  //     campusPeopleData.data.length > 0
+  //   ) {
+  //     campusPeopleList = campusPeopleData.data.map((member) => ({
+  //       id: member.id,
+  //       name: member.attributes.name,
+  //       position: member.attributes.team_position_name,
+  //       notes: member.attributes.notes,
+  //       status: member.attributes.status,
+  //       photo: member.attributes.photo_thumbnail,
+  //     }))
+  //     // console.log(campusPeopleList)
+  //   } else {
+  //     campusPeopleList = []
+  //     console.error("pcoCAMPUSData is undefined or empty")
+  //   }
 
   // ! Establishing VOCALS Declined Folks
   const filteredVocals = worshipPeopleList.filter(
@@ -194,19 +202,21 @@ export default function ClientComponent({
   })
 
   // ! Establishing BAND Declined Folks
-  const filteredBand = bandPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
-  )
-  const sortedBand = filteredBand.sort((a, b) => {
-    if (a.position < b.position) return -1
-    if (a.position > b.position) return 1
-    return 0
-  })
+
+  //   const filteredBand = bandPeopleList.filter(
+  //     (item) => item.status !== "D" && item.status !== "U"
+  //   )
+  //   const sortedBand = filteredBand.sort((a, b) => {
+  //     if (a.position < b.position) return -1
+  //     if (a.position > b.position) return 1
+  //     return 0
+  //   })
 
   // ! Establishing ORCHESTRA Declined Folks
-  const filteredOrchestra = orchestraPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
-  )
+
+  //   const filteredOrchestra = orchestraPeopleList.filter(
+  //     (item) => item.status !== "D" && item.status !== "U"
+  //   )
 
   // ! Establishing PRODUCTION Declined Folks
   const filteredProduction = productionPeopleList.filter(
@@ -214,9 +224,11 @@ export default function ClientComponent({
   )
 
   // ! Establishing CAMPUS Declined Folks
-  const filteredCampus = campusPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
-  )
+
+  //   const filteredCampus = campusPeopleList.filter(
+  //     (item) => item.status !== "D" && item.status !== "U"
+  //   )
+
   // ! Takes out Positions Unnecessary to the Dashboard
   const getRidinRoomVals = [
     "Broadcast Coordinator",
@@ -308,9 +320,9 @@ export default function ClientComponent({
     }
   )
 
-  campusPeopleList = campusPeopleList.filter(
-    (person) => !getRidCampusVals.includes(person.position)
-  )
+  //   campusPeopleList = campusPeopleList.filter(
+  //     (person) => !getRidCampusVals.includes(person.position)
+  //   )
 
   // console.log(vocalList)
 
@@ -381,19 +393,19 @@ export default function ClientComponent({
           className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-4 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[700px_minmax(900px,_1fr)]
       ">
           {/* VOCALS TEAM CHART */}
-          <VocalsTable people={vocalList} styles={picStyles} />
+          <WNVocalsTable people={vocalList} styles={picStyles} />
+          <OtherWNBand people={vocalList} styles={picStyles} />
           {/* BAND TEAM CHART */}
-          <BandTable
-            band1={sortedBand}
+          {/* <WNBandTable
+            band1={vocalList}
             band2={filteredOrchestra}
             styles={picStyles}
-          />
+          /> */}
 
           {/* SERVICE INFO TEAM CHART */}
-          <ServiceInfoTable
-            sermonSeriesTitle={currentService.data[0].attributes.series_title}
-            sermonTitle={currentService.data[0].attributes.title}
-            people={filteredCampus}
+          {/* IN ROOM PRODUCTION TEAM CHART */}
+          <WNInRoomProdTable
+            people={sortedInRoomProductionPeopleList}
             styles={picStyles}
           />
           <div>
@@ -416,25 +428,20 @@ export default function ClientComponent({
             </div>
           </div>
 
-          {/* IN ROOM PRODUCTION TEAM CHART */}
-          <InRoomProdTable
-            people={sortedInRoomProductionPeopleList}
-            styles={picStyles}
-          />
           {/* BROADCAST PRODUCTION TEAM CHART */}
-          <BroadcastProdTable
+          {/* <BroadcastProdTable
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-          />
-          <BroadcastProdTable2
+          /> */}
+          {/* <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-          />
+          /> */}
           {/* ONLINE PRODUCTION TEAM CHART */}
-          <OnlineProdTable
+          {/* <OnlineProdTable
             people={sortedOnlineProductionPeopleList}
             styles={picStyles}
-          />
+          /> */}
         </div>
       </div>
     </div>

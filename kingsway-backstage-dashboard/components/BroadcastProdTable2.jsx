@@ -18,7 +18,7 @@ export default function BroadcastProdTable2(props) {
     "Broadcast Audio",
   ]
 
-  console.log(props.people)
+  // console.log(props.people)
 
   let cameraList = []
 
@@ -26,7 +26,7 @@ export default function BroadcastProdTable2(props) {
     (person) => !getRidForCamVals.includes(person.position)
   )
 
-  console.log("This is the result: " + cameraList)
+  // console.log("This is the result: " + cameraList)
 
   return (
     <div className="row-start-2 col-start-3 flex shrink flex-col order-5">

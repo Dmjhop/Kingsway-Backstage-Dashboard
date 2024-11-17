@@ -6,3 +6,15 @@
   height: 100vh;
   z-index: 0;
 }
+.container {
+  width: 10.5rem;
+  height: 12rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background: #073f53;
+  box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.25) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

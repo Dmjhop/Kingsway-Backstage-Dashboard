@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="">
       <MainNavbar></MainNavbar>
-      <h1>Kingsway Worship Backstage lol</h1>
+      <h1>Kingsway Worship Backstage</h1>
     </main>
   )
 }
