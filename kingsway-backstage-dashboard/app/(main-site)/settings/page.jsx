@@ -3,8 +3,9 @@ import ServiceSettings from "@/components/ServiceSettings"
 export default async function Settings() {
   let serviceTypeList = {}
 
-  const myHeaders = new Headers()
-  myHeaders.append("Authorization", process.env.API_SECRET)
+  const myHeaders = new Headers({
+    Authorization: process.env.API_SECRET,
+  })
 
   const requestOptions = {
     method: "GET",

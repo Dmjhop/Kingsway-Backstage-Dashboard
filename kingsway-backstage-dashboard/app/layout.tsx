@@ -5,6 +5,8 @@ import "./globals.css"
 import MainNavbar from "@/components/ui/MainNavbar"
 import NextAuth from "next-auth/next"
 import { ReactNode } from "react"
+const dotenv = require("dotenv")
+dotenv.config()
 
 const inter = Inter({ subsets: ["latin"] })
 

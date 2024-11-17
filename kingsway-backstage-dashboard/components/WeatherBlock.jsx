@@ -6,19 +6,21 @@ import vari from "../next.config"
 import Image from "next/image"
 import weaStyles from "@/styles/otherstyles.module.css"
 import "dotenv/config"
+import { Skeleton } from "./ui/skeleton"
+
+require("dotenv").config()
 
 export default function WeatherBlock(props) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const apiKey = process.env.WEATHER_API
-
-  const apiiiikey = apiKey
+  // const apiiiikey = apiKey
 
   useEffect(() => {
     const fetchData = async () => {
       let weatherLAT = ""
       let weatherLON = ""
+      let key = "dec365eb0deebfdfb48e07c1ae6ba480"
 
       if (props.title === `CHL`) {
         weatherLAT = "39.92766879306311"
@@ -28,7 +30,7 @@ export default function WeatherBlock(props) {
         weatherLON = `-75.100563296308567`
       }
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${weatherLAT}&lon=${weatherLON}&appid=${apiiiikey}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${weatherLAT}&lon=${weatherLON}&appid=${key}&units=imperial`
       )
       setData(res.data)
       setLoading(false)
@@ -40,18 +42,15 @@ export default function WeatherBlock(props) {
 
   if (loading)
     return (
-      <div className={weaStyles.container}>
-        <h2>
-          <strong>{props.title}</strong>
-        </h2>
-        <p>Loading...</p>
+      <div className="align-middle justify-center">
+        <Skeleton className="w-[200px] h-[200px] rounded-lg align-middle justify-center" />
       </div>
     )
   let weatherCondition = data.weather[0].icon
 
   return (
     <div className={weaStyles.container}>
-      <h2>
+      <h2 className="font-normal text-2xl">
         <strong>{props.title}</strong>
       </h2>
       <Image
@@ -59,7 +58,9 @@ export default function WeatherBlock(props) {
         width={80}
         height={80}
         alt={`Pic of ${data.weather.main}`}></Image>
-      <h4>{Math.round(data.main.temp) + `\u00B0`}</h4>
+      <h4 className="font-normal text-2xl">
+        {Math.round(data.main.temp) + `\u00B0`}
+      </h4>
       <p>
         H:{Math.round(data.main.temp_max) + `\u00B0`} L:
         {Math.round(data.main.temp_min) + `\u00B0`}

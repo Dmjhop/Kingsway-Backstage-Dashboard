@@ -40,6 +40,7 @@ import backImage from "@/public/backstagebackground.png"
 import ClientDashboard from "@/components/ClientDashboard"
 import "dotenv/config"
 import defaultLayoutImg from "@/public/No Current Layout.png"
+require("dotenv").config()
 
 const myHeaders = new Headers()
 myHeaders.append("Authorization", process.env.API_SECRET)

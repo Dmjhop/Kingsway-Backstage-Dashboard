@@ -1,0 +1,132 @@
+"use server"
+import PersonCard from "@/components/ui/PersonCard"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import NewServiceForm from "@/components/ui/NewServiceForm"
+import SmallCardBackground from "@/components/ui/SmallCardBackground"
+import VerticalCardBackground from "@/components/ui/VerticalCardBackground"
+import LargeCardBackground from "@/components/ui/LargeCardBackground"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import otherstyles from "@/styles/otherstyles.module.css"
+import Image from "next/image"
+import backImage from "@/public/backstagebackground.png"
+// import { revalidateDashboard } from "@/app/actions/revalidate"
+import WorshipNightClientDashboard from "@/components/WorshipNightDashboard"
+import "dotenv/config"
+import defaultLayoutImg from "@/public/No Current Layout.png"
+require("dotenv").config()
+
+const myHeaders = new Headers()
+myHeaders.append("Authorization", process.env.API_SECRET)
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+  // cache: "force-cache",
+}
+
+let worshipPCOData = []
+let bandPCOData = []
+let orchestraPCOData = []
+let campusPeopleData = []
+let productionPCOData = []
+let attachmentData = []
+let worshipPeopleList
+let bandPeopleList
+let orchestraPeopleList
+let campusPeopleList
+let productionPeopleList
+let currentService = []
+let dateOfService
+let inRoomProductionPeopleList
+let broadcastProductionPeopleList
+let onlineProductionPeopleList
+let trueAttachment
+
+export default async function BackstageWorshipNightView() {
+  //? API CALL FOR THE CURRENT SERVICE ID IN THE LIST
+  try {
+    const response = await fetch(
+      "https://api.planningcenteronline.com/services/v2/service_types/571434/plans?filter=future&per_page=1",
+      requestOptions
+    )
+    currentService = await response.json()
+    // console.log(currentService)
+  } catch (error) {
+    console.error(error)
+  }
+  // ? API CALL FOR Band TEAM
+  try {
+    const response = await fetch(
+      `https://api.planningcenteronline.com/services/v2/service_types/571434/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=2195372`,
+      requestOptions
+    )
+    worshipPCOData = await response.json()
+    // console.log(worshipPCOData.data[0].id)
+  } catch (error) {
+    console.error(error)
+  }
+  // ? API CALL FOR Production TEAM
+  try {
+    const response = await fetch(
+      `https://api.planningcenteronline.com/services/v2/service_types/571434/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=2271098`,
+      requestOptions
+    )
+    productionPCOData = await response.json()
+    // console.log(currentService)
+  } catch (error) {
+    console.error(error)
+  }
+  // ? API CALL FOR STAGE LAYOUT
+  try {
+    const response = await fetch(
+      `https://api.planningcenteronline.com/services/v2/service_types/571434/plans/${currentService.data[0].id}/attachments.data[0]`,
+      requestOptions
+    )
+    attachmentData = await response.json()
+    // console.log(attachmentData.data[0].attributes.thumbnail_url)
+    trueAttachment = attachmentData.data[0].attributes.thumbnail_url
+  } catch (error) {
+    trueAttachment = defaultLayoutImg
+    console.error(error)
+  }
+
+  // await revalidateDashboard()
+
+  return (
+    <WorshipNightClientDashboard
+      initialPlan={currentService}
+      initialWorship={worshipPCOData}
+      initialBand={bandPCOData}
+      initialProduction={productionPCOData}
+      initialLayout={trueAttachment}
+    />
+  )
+}
