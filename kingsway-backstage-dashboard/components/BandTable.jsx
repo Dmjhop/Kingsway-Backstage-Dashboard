@@ -12,6 +12,10 @@ import {
 import Image from "next/image"
 
 export default function BandTable(props) {
+  // const picStyles = {
+  //   borderRadius: "50%",
+  //   boxShadow: `0px 0px 16px 3px rgb(0,187,228, 0.7)`,
+  // }
   return (
     <div className="row-start-1 col-start-2 flex shrink flex-col order-3">
       <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
@@ -49,7 +53,7 @@ export default function BandTable(props) {
                   src={person.photo}
                   width={50}
                   height={50}
-                  style={picStyles}
+                  style={props.styles}
                   alt={`This is the profile pic of ${person.name}`}
                 />
                 {person.name}

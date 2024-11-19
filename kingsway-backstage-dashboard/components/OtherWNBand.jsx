@@ -21,6 +21,7 @@ export default function OtherWNBand(props) {
   trueVocalList = props.people.filter(
     (person) => !getRidForVocalVals.includes(person.position)
   )
+
   return (
     <div className="row-start-1 col-start-2 flex shrink flex-col order-2">
       <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
