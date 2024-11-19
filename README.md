@@ -1,6 +1,6 @@
 # Worship Arts | Production Backstage Dashboard
 A Church Backstage Dashboard That Loves Nothing More Than The Planning Center API :)
-<a href="https://kingsway-backstage-dashboard.vercel.app/backstage/pagepage" rel="nofollow"><img src="https://ik.imagekit.io/kingswaychurch/Kingswaysyhdkfhsd.png?updatedAt=1731737996431" style="max-width: 100%;"></a>
+<a href="https://kingsway-backstage-dashboard.vercel.app/backstage/sunday-default" rel="nofollow"><img src="https://ik.imagekit.io/kingswaychurch/Screenshot%202024-11-17%20110352.png?updatedAt=1731998546522" style="max-width: 100%;"></a>
 
 
 ## Tech Stack
