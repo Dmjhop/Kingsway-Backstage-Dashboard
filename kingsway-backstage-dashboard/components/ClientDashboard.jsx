@@ -342,14 +342,14 @@ export default function ClientComponent({
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
-          <ClockComp />
           {dateOfService.map((dispDate) => (
             <h2
               key={dispDate}
-              className="text-2xl text-center lg:font-extrabold lg:text-5xl">
+              className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
               {dispDate.todayDate}
             </h2>
           ))}
+          <ClockComp />
         </header>
         {/* Dashboard Entire Component */}
         {/* {isVisible && (
@@ -396,7 +396,7 @@ export default function ClientComponent({
             people={filteredCampus}
             styles={picStyles}
           />
-          <div>
+          <div className="order-8">
             <div>
               <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
                 Weather

@@ -34,13 +34,15 @@ export default function VerseOfTheDay() {
     )
 
   return (
-    <div className={verseStyles.vContainer}>
+    <div className="pb-5 px-5">
       &nbsp;
       <h2 className="text-center font-bold text-2xl">
         {vdata.verse.details.reference}
         &nbsp;{vdata.verse.details.version}
       </h2>
-      <p className="text-center text-2xl">{vdata.verse.details.text}</p>
+      <p className="text-lg lg:font-normal lg:text-2xl text-center">
+        {vdata.verse.details.text}
+      </p>
     </div>
   )
 }

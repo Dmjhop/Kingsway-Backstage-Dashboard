@@ -24,20 +24,24 @@ export default function OnlineProdTable(props) {
           </TableRow>
         </TableHeader>
         <TableBody className="font-normal text-2xl">
-          <TableRow className="font-normal ">
+          <TableRow className="text-lg lg:font-normal lg:text-2xl">
             <TableCell>Sermon Series</TableCell>
-            <TableCell className="text-center">
+            <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
               {props.sermonSeriesTitle}
             </TableCell>
           </TableRow>
-          <TableRow className="font-normal ">
+          <TableRow className="text-lg lg:font-normal lg:text-2xl">
             <TableCell>Sermon Title</TableCell>
-            <TableCell className="text-center">{props.sermonTitle}</TableCell>
+            <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+              {props.sermonTitle}
+            </TableCell>
           </TableRow>
           {props.people.map((person) => (
-            <TableRow key={person.name} className="font-normal ">
+            <TableRow
+              key={person.name}
+              className="text-lg lg:font-normal lg:text-2xl">
               <TableCell>{person.position}</TableCell>
-              <TableCell className="text-center flex flex-row items-center gap-x-3">
+              <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
                 <Image
                   src={person.photo}
                   width={50}
@@ -47,7 +51,9 @@ export default function OnlineProdTable(props) {
                 />
                 {person.name}
               </TableCell>
-              <TableCell>{person.notes}</TableCell>
+              <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+                {person.notes}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

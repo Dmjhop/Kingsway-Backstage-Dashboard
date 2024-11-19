@@ -30,15 +30,15 @@ export default function BroadcastProdTable(props) {
       </h2>
       <Table className="h-[100px] ">
         <TableHeader>
-          <TableRow className="font-normal text-2xl">
+          <TableRow className="text-xl lg:font-normal lg:text-2xl">
             <TableHead>Person</TableHead>
             <TableHead className="text-center">Role</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {broadList.map((person) => (
-            <TableRow key={person.id} className="font-normal text-2xl">
-              <TableCell className="font-normal text-2xl flex flex-row items-center gap-x-3">
+            <TableRow key={person.id} className="lg:font-normal lg:text-2xl">
+              <TableCell className="text-lg lg:font-normal lg:text-2xl  flex flex-row items-center gap-x-3">
                 <Image
                   src={person.photo}
                   width={50}
@@ -48,7 +48,9 @@ export default function BroadcastProdTable(props) {
                 />
                 {person.name}
               </TableCell>
-              <TableCell className="text-center">{person.position}</TableCell>
+              <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+                {person.position}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
