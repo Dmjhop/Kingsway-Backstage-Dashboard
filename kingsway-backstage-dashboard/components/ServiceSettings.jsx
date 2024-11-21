@@ -34,6 +34,9 @@ export default function ServiceSettings(props) {
   let serviceLists = props.serviceList
   //   console.log(serviceLists)
   let [selectedService, setSelectedService] = useState("285446")
+  let [team, setTeamData] = useState({})
+  let [error, setError] = useState()
+
   let teamList = []
 
   console.log(serviceLists.data.data)
@@ -41,7 +44,18 @@ export default function ServiceSettings(props) {
   const handleChange = (e) => {
     console.log(e)
     setSelectedService(e)
-    // teamList = teamListing(selectedService)
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const response = await axios.get("http://localhost:3000/api/getTeams")
+    //       console.log(response.data)
+    //       setData(response.data)
+    //     } catch (err) {
+    //       setError(err)
+    //     }
+    //   }
+    //   fetchData()
+    // }, [])
   }
   console.log("this is outside of the handlechange method " + selectedService)
 
@@ -74,10 +88,10 @@ export default function ServiceSettings(props) {
       <h1>Here is the Selected Service ID</h1>
       <p>{selectedService}</p>
 
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger>Open</DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>Teams for that Service</DropdownMenuLabel>
+          <DropdownMenuLabel>Teams for that Service?</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             value={selectedService}
@@ -91,7 +105,7 @@ export default function ServiceSettings(props) {
             })}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </div>
   )
 }
