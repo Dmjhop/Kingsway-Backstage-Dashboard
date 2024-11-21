@@ -80,12 +80,12 @@ try {
 
 New Goals with this app:
 1. Figure out Oauth so that other users can use this
-2. Figure out how to make the tables work for any team and how to exclude roles/positions 
+2. Figure out how to make the tables work for any team and how to exclude roles/positions
 3. Figure out how different service types can function using this app
 4. Create a preview page so that its not annoying trying to verify each part of the dashboard is correct
 5. Create a mobile page so that people on mobile can easily see it
 6. Make this a PWA ^^^
-7. 
+7.
 
 
 
@@ -105,3 +105,44 @@ Could probably populate that team list with the data[i].attributes.name using a 
 For example: Table 1 what team do you want there? And any roles you do not want there?
 
 Once all of that is configured, it changes the values of states in the dashboard views and then places them in the dashboard for viewing
+
+
+
+
+
+
+import { NextResponse } from "next/server"
+
+export async function GET() {
+  const myHeaders = new Headers({
+    Authorization: process.env.API_SECRET,
+  })
+
+  const requestOptions = {
+    headers: myHeaders,
+    redirect: "follow",
+    // cache: "force-cache",
+  }
+  //   try {
+  //     const response = await fetch(
+  //       "https://api.planningcenteronline.com/services/v2/service_types/",
+  //       requestOptions
+  //     )
+  //     serviceTypeList = await response.json()
+  //     console.log(serviceTypeList)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+
+  const res = await fetch(
+    "https://api.planningcenteronline.com/services/v2/service_types/",
+    requestOptions
+  )
+  const data = await res.json()
+
+  if (!res.ok) {
+    return { message: "Please enter a valid email" }
+  }
+
+  return Response.json({ data })
+}
