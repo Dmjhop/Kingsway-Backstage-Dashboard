@@ -36,6 +36,8 @@ export default function ServiceSettings(props) {
   let [selectedService, setSelectedService] = useState("285446")
   let teamList = []
 
+  console.log(serviceLists.data.data)
+
   const handleChange = (e) => {
     console.log(e)
     setSelectedService(e)
@@ -43,7 +45,6 @@ export default function ServiceSettings(props) {
   }
   console.log("this is outside of the handlechange method " + selectedService)
 
-  console.log(teamListing(selectedService))
   return (
     <div>
       <h2>Select below the Service you want?</h2>
@@ -60,7 +61,7 @@ export default function ServiceSettings(props) {
             value={selectedService}
             onValueChange={handleChange}
             onChange={handleChange}>
-            {serviceLists.data.map((type) => {
+            {serviceLists.data.data.map((type) => {
               return (
                 <DropdownMenuRadioItem key={type.id} value={type.id}>
                   {type.attributes.name}
@@ -73,7 +74,7 @@ export default function ServiceSettings(props) {
       <h1>Here is the Selected Service ID</h1>
       <p>{selectedService}</p>
 
-      {/* <DropdownMenu>
+      <DropdownMenu>
         <DropdownMenuTrigger>Open</DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Teams for that Service</DropdownMenuLabel>
@@ -90,7 +91,7 @@ export default function ServiceSettings(props) {
             })}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
-      </DropdownMenu> */}
+      </DropdownMenu>
     </div>
   )
 }

@@ -49,7 +49,7 @@ export default function BandTable(props) {
                   src={person.photo}
                   width={50}
                   height={50}
-                  style={picStyles}
+                  style={props.styles}
                   alt={`This is the profile pic of ${person.name}`}
                 />
                 {person.name}
