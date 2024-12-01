@@ -36,120 +36,40 @@ import {
 import otherstyles from "@/styles/otherstyles.module.css"
 import Image from "next/image"
 import backImage from "@/public/backstagebackground.png"
-// import { revalidateDashboard } from "@/app/actions/revalidate"
+import { revalidateDashboard } from "@/app/actions/revalidate"
 import ClientDashboard from "@/components/ClientDashboard"
 import "dotenv/config"
 import defaultLayoutImg from "@/public/No Current Layout.png"
+import { getServicePlan } from "@/app/data/getServicePlan"
+import { getBand } from "@/app/data/getBand"
+import { getCampus } from "@/app/data/getCampus"
+import { getOrchestra } from "@/app/data/getOrchestra"
+import { getProduction } from "@/app/data/getProduction"
+import { getVocals } from "@/app/data/getVocals"
+import { getLayout } from "@/app/data/getLayout"
 require("dotenv").config()
-
-const myHeaders = new Headers()
-myHeaders.append("Authorization", process.env.API_SECRET)
-
-const requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-  redirect: "follow",
-  // cache: "force-cache",
-}
 
 let worshipPCOData = []
 let bandPCOData = []
 let orchestraPCOData = []
 let campusPeopleData = []
 let productionPCOData = []
-let attachmentData = []
-let worshipPeopleList
-let bandPeopleList
-let orchestraPeopleList
-let campusPeopleList
-let productionPeopleList
-let currentService = []
-let dateOfService
-let inRoomProductionPeopleList
-let broadcastProductionPeopleList
-let onlineProductionPeopleList
 let trueAttachment
 
 export default async function BackstageView() {
-  //? API CALL FOR THE CURRENT SERVICE ID IN THE LIST
-  try {
-    const response = await fetch(
-      "https://api.planningcenteronline.com/services/v2/service_types/285406/plans?filter=future&per_page=1",
-      requestOptions
-    )
-    currentService = await response.json()
-    // console.log(currentService)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR WORSHIP TEAM
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=5767747`,
-      requestOptions
-    )
-    worshipPCOData = await response.json()
-    // console.log(worshipPCOData.data[0].id)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR BAND TEAM
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=1017818`,
-      requestOptions
-    )
-    bandPCOData = await response.json()
-    // console.log(currentService)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR ORCHESTRA TEAM
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=5674102`,
-      requestOptions
-    )
-    orchestraPCOData = await response.json()
-    // console.log(currentService)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR PRODUCTION TEAM
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=1017822`,
-      requestOptions
-    )
-    productionPCOData = await response.json()
-    // console.log(currentService)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR SPEAKER | SERVICE HOST | POINT PERSON (CAMPUS TEAM)
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=2620409`,
-      requestOptions
-    )
-    campusPeopleData = await response.json()
-    // console.log(currentService)
-  } catch (error) {
-    console.error(error)
-  }
-  // ? API CALL FOR STAGE LAYOUT
-  try {
-    const response = await fetch(
-      `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/attachments.data[0]`,
-      requestOptions
-    )
-    attachmentData = await response.json()
-    // console.log(attachmentData.data[0].attributes.thumbnail_url)
-    trueAttachment = attachmentData.data[0].attributes.thumbnail_url
-  } catch (error) {
-    trueAttachment = defaultLayoutImg
-    console.error(error)
-  }
+  const currentService = await getServicePlan()
+
+  worshipPCOData = await getVocals(currentService)
+
+  bandPCOData = await getBand(currentService)
+
+  orchestraPCOData = await getOrchestra(currentService)
+
+  productionPCOData = await getProduction(currentService)
+
+  campusPeopleData = await getCampus(currentService)
+
+  trueAttachment = await getLayout(currentService)
 
   // await revalidateDashboard()
 
