@@ -14,7 +14,7 @@ import Image from "next/image"
 export default function VocalsTable(props) {
   return (
     <div className="row-start-1 col-start-1 flex shrink flex-col order-1">
-      <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+      <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
         Vocals
       </h2>
       <Table className="">

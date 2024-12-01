@@ -335,12 +335,15 @@ export default function ClientComponent({
     zIndex: "1000",
   }
 
+  // normal color = text-[#00bbe4]
+  // christmas colors =
+
   return (
     <div>
       <Snowfall />
       <div className="max-h-screen">
         {/* Header Component */}
-        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
+        <header className=" text-[#d14150] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
@@ -400,7 +403,7 @@ export default function ClientComponent({
           />
           <div className="order-8">
             <div>
-              <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
                 Weather
               </h2>
               &nbsp;
@@ -411,7 +414,7 @@ export default function ClientComponent({
             </div>
             &nbsp;
             <div>
-              <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
                 Verse Of The Day
               </h2>
               <VerseOfTheDay />

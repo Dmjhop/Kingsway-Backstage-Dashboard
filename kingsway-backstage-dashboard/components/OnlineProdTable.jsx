@@ -14,7 +14,7 @@ import Image from "next/image"
 export default function OnlineProdTable(props) {
   return (
     <div className=" row-start-2 col-start-4 flex shrink flex-col order-7">
-      <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
+      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
         Online
       </h2>
       <Table>
