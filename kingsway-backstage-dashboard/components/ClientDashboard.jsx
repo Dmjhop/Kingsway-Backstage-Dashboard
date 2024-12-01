@@ -11,6 +11,7 @@ import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
 import WeatherBlock from "@/components/WeatherBlock"
 import VerseOfTheDay from "@/components/VerseOfTheDay"
+import Snowfall from "react-snowfall"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
@@ -336,6 +337,7 @@ export default function ClientComponent({
 
   return (
     <div>
+      <Snowfall />
       <div className="max-h-screen">
         {/* Header Component */}
         <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
