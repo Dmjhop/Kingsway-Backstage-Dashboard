@@ -21,10 +21,17 @@ export async function getLayout(currentService) {
     requestOptions
   )
   attachmentData = await res.json()
-  trueAttachment = attachmentData.data[0].attributes.thumbnail_url
-  if (!res.ok) {
+
+  if (
+    !res.ok ||
+    attachmentData === undefined ||
+    attachmentData.data[0] === undefined ||
+    attachmentData.data[0].attributes.thumbnail_url === undefined
+  ) {
     trueAttachment = defaultLayoutImg
+    return trueAttachment
   } else {
+    trueAttachment = attachmentData.data[0].attributes.thumbnail_url
     return trueAttachment
   }
 }
