@@ -14,6 +14,7 @@ import {
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { useEffect } from "react"
+import { getTeamListing } from "@/app/api/getTeamListing"
 
 import { teamListing } from "@/components/teamListing"
 
@@ -34,9 +35,7 @@ export default function ServiceSettings(props) {
   let serviceLists = props.serviceList
   //   console.log(serviceLists)
   let [selectedService, setSelectedService] = useState("285446")
-  let [team, setTeamData] = useState({})
-  let [error, setError] = useState()
-
+  let [selectedTeams, setSelectedTeams] = useState(["Production"])
   let teamList = []
 
   console.log(serviceLists.data.data)
@@ -44,21 +43,11 @@ export default function ServiceSettings(props) {
   const handleChange = (e) => {
     console.log(e)
     setSelectedService(e)
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get("http://localhost:3000/api/getTeams")
-    //       console.log(response.data)
-    //       setData(response.data)
-    //     } catch (err) {
-    //       setError(err)
-    //     }
-    //   }
-    //   fetchData()
-    // }, [])
+    teamList = getTeamListing(selectedService)
   }
   console.log("this is outside of the handlechange method " + selectedService)
 
+  // console.log(teamListing(selectedService))
   return (
     <div>
       <h2>Select below the Service you want?</h2>
@@ -87,16 +76,16 @@ export default function ServiceSettings(props) {
       </DropdownMenu>
       <h1>Here is the Selected Service ID</h1>
       <p>{selectedService}</p>
-
-      {/* <DropdownMenu>
+      <h2>What teams would you like displayed?</h2>
+      <DropdownMenu>
         <DropdownMenuTrigger>Open</DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Teams for that Service?</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
-            value={selectedService}
-            onValueChange={setSelectedService}>
-            {serviceLists.data.map((type) => {
+            value={selectedTeams}
+            onValueChange={setSelectedTeams}>
+            {teamList.map((type) => {
               return (
                 <DropdownMenuRadioItem key={type.id} value={type.id}>
                   {type.attributes.name}
@@ -105,7 +94,7 @@ export default function ServiceSettings(props) {
             })}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
-      </DropdownMenu> */}
+      </DropdownMenu>
     </div>
   )
 }
