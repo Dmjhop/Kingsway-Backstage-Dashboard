@@ -12,11 +12,8 @@ const requestOptions = {
 
 export async function getServicePlan() {
   const res = await fetch(
-    "https://api.planningcenteronline.com/services/v2/service_types/285406/plans/74391473",
+    "https://api.planningcenteronline.com/services/v2/service_types/285406/plans?filter=future&per_page=1",
     requestOptions
   )
   return res.json()
 }
-
-// 74391473
-// https://api.planningcenteronline.com/services/v2/service_types/285406/plans?filter=future&per_page=1

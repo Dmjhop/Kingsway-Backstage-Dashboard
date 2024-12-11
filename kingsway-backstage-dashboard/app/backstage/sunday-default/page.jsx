@@ -34,7 +34,7 @@ export default async function BackstageView() {
 
   trueAttachment = await getLayout(currentService)
 
-  await revalidateDashboard()
+  // await revalidateDashboard()
 
   return (
     <ClientDashboard
