@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Worship Arts | Production Backstage Dashboard
+A Church Backstage Dashboard That Loves Nothing More Than The Planning Center API :)
+<a href="https://kingsway-backstage-dashboard.vercel.app/backstage/sunday-default" rel="nofollow"><img src="https://ik.imagekit.io/kingswaychurch/Screenshot%202024-11-17%20110352.png?updatedAt=1731998546522" style="max-width: 100%;"></a>
 
-## Getting Started
 
-First, run the development server:
+## Tech Stack
+- <a href="https://nextjs.org/" rel="nofollow">Next.JS / React</a>
+- <a href="https://www.planningcenter.com/developers">Planning Center API</a>
+- <a href="https://vercel.com/" rel="nofollow">Vercel</a>
+- <a href="https://openweathermap.org/">Open Weather API</a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
+- Mobile Responsive / Friendly
+- Simple Layout
+- Flips between the Role Information and the Stage Map
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Highlights
+<p>Each week, my church production leads had to print out individual documents with all of the information needed for our worship team to know what mics and in-ear monitor packs to use. I figured why not utilize a tool we already adopted, Planning Center, check out their API, and make a dynamic dashboard.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+So that's what I did! Using a combination of <a href="https://nextjs.org/">Next.JS</a>, <a href="https://tailwindcss.com/">TailwindCSS</a>, <a href="https://ui.shadcn.com/">ShadCN's</a> awesome component library, a dynamic and regularly updated dashboard was created! 
 
-## Learn More
+As mentioned, I am using Planning Center's <a href="https://www.planningcenter.com/developers">API</a> to fetch for all of the data points displayed that's regularly reloaded every 10 seconds. It will also not advance to the next week's plan until each Sunday has finished up! 
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Version 1 of this Dashboard is complete but I soon want to create a Version 2 that has more features in it!</p>
