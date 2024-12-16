@@ -7,7 +7,7 @@ A Church Backstage Dashboard That Loves Nothing More Than The Planning Center AP
 - <a href="https://nextjs.org/" rel="nofollow">Next.JS / React</a>
 - <a href="https://www.planningcenter.com/developers">Planning Center API</a>
 - <a href="https://vercel.com/" rel="nofollow">Vercel</a>
-- <a href="https://openweathermap.org/">(Soon) Open Weather API</a>
+- <a href="https://openweathermap.org/">Open Weather API</a>
 
 
 ## Features
