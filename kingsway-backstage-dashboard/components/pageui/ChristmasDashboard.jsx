@@ -75,20 +75,20 @@ export default function ChristmasDashboard({
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
-  //   const fadeIn = useSpring({
-  //     from: { opacity: 0 },
-  //     to: { opacity: 1 },
-  //     delay: 5000,
-  //     config: {
-  //       duration: 1000,
-  //       // 2 seconds for fade in/out
-  //     },
-  //     //: [1000, 5000, 17000], // Delays between phases
-  //     loop: {
-  //       reverse: true, // Makes it go back and forth
-  //       delay: 10000, // Adds delay before reversing (hold time)
-  //     },
-  //   })
+  const fadeIn = useSpring({
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    delay: 5000,
+    config: {
+      duration: 1000,
+      // 2 seconds for fade in/out
+    },
+    //: [1000, 5000, 17000], // Delays between phases
+    loop: {
+      reverse: true, // Makes it go back and forth
+      delay: 10000, // Adds delay before reversing (hold time)
+    },
+  })
   //   useEffect(() => {
   //     const interval = setInterval(() => {
   //       setIsVisible((prevIsVisible) => !prevIsVisible)
@@ -419,14 +419,14 @@ export default function ChristmasDashboard({
           </motion.div>
         )} */}
 
-        {/* <animated.div style={{ ...fadeIn, ...layoutStyles }}>
+        <animated.div style={{ ...fadeIn, ...layoutStyles }}>
           <Image
             src={stageLayout}
             width={1920}
             height={1080}
             alt="This is the stage layout"
           />
-        </animated.div> */}
+        </animated.div>
 
         <div
           className="flex flex-col lg:grid  lg:grid-cols-4 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
