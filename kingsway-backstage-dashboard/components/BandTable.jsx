@@ -33,8 +33,8 @@ export default function BandTable(props) {
         </TableHeader>
         <TableBody>
           {props.band1.map((person) => (
-            <TableRow key={person.id} className="lg:font-normal lg:text-2xl">
-              <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
+            <TableRow key={person.id} className="lg:font-normal lg:text-2xl ">
+              <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3 ">
                 <Image
                   src={person.photo}
                   width={50}
