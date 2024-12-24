@@ -4,13 +4,16 @@ import backImage from "@/public/backstagebackground.png"
 import ClockComp from "@/components/ClockComp"
 import InRoomProdTable from "@/components/InRoomProdTable"
 import VocalsTable from "@/components/VocalsTable"
-import OnlineProdTable from "@/components/OnlineProdTable"
+import ChrOnlineBroadTable from "@/components/ChrOnlineBroadTable"
 import BandTable from "@/components/BandTable"
+import ChrInRoom1 from "@/components/ChrInRoom1"
+import ChrInRoom2 from "@/components/ChrInRoom2"
 import BroadcastProdTable from "@/components/BroadcastProdTable"
 import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
 import WeatherBlock from "@/components/WeatherBlock"
 import VerseOfTheDay from "@/components/VerseOfTheDay"
+import ChrVOTD from "@/components/ChrVOTD"
 import Snowfall from "react-snowfall"
 
 import { useEffect, useState } from "react"
@@ -22,7 +25,7 @@ import * as motion from "framer-motion/client"
 import "dotenv/config"
 require("dotenv").config()
 
-export default function ClientComponent({
+export default function ChristmasDashboard({
   initialPlan,
   initialWorship,
   initialBand,
@@ -72,14 +75,14 @@ export default function ClientComponent({
   }, [])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible((prevIsVisible) => !prevIsVisible)
-    }, 15000)
+  //   useEffect(() => {
+  //     const interval = setInterval(() => {
+  //       setIsVisible((prevIsVisible) => !prevIsVisible)
+  //     }, 15000)
 
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval)
-  }, [])
+  //     // Clean up the interval on component unmount
+  //     return () => clearInterval(interval)
+  //   }, [])
 
   // * COMMENT/UNCOMMENT THIS ^^ABOVE^^ WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
   if (currentService && currentService.data && currentService.data.length > 0) {
@@ -421,27 +424,32 @@ export default function ClientComponent({
               <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
                 Verse Of The Day
               </h2>
-              <VerseOfTheDay />
+              <ChrVOTD />
             </div>
           </div>
 
           {/* IN ROOM PRODUCTION TEAM CHART */}
-          <InRoomProdTable
+          <ChrInRoom1
+            people={sortedInRoomProductionPeopleList}
+            styles={picStyles}
+          />
+          <ChrInRoom2
             people={sortedInRoomProductionPeopleList}
             styles={picStyles}
           />
           {/* BROADCAST PRODUCTION TEAM CHART */}
-          <BroadcastProdTable
+          {/* <BroadcastProdTable
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-          />
+          /> */}
           <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
           />
           {/* ONLINE PRODUCTION TEAM CHART */}
-          <OnlineProdTable
-            people={sortedOnlineProductionPeopleList}
+          <ChrOnlineBroadTable
+            onlinePeople={sortedOnlineProductionPeopleList}
+            broadcastPeople={sortedBroadcastProductionPeopleList}
             styles={picStyles}
           />
         </div>

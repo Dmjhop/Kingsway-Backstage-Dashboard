@@ -11,30 +11,32 @@ import {
 
 import Image from "next/image"
 
-export default function BandTable(props) {
-  // const picStyles = {
-  //   borderRadius: "50%",
-  //   boxShadow: `0px 0px 16px 3px rgb(0,187,228, 0.7)`,
-  // }
+export default function ChrOnlineBroadTable(props) {
+  const getRidForBroadVals = ["Camera"]
+
+  // console.log(props.people)
+
+  let broadList = []
+
+  broadList = props.broadcastPeople.filter(
+    (person) => !getRidForBroadVals.includes(person.position)
+  )
   return (
-    <div className="row-start-1 col-start-2 flex shrink flex-col order-3 lg:order-2">
-      <h2 className="text-center text-[#d14150] text-[32px] font-bold  mx-auto">
-        Band
+    <div className=" row-start-2 col-start-4 flex shrink flex-col order-7">
+      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
+        Broadcast
       </h2>
-      <Table className="">
+      <Table className="h-[100px] ">
         <TableHeader>
           <TableRow className="text-xl lg:font-normal lg:text-2xl">
             <TableHead>Person</TableHead>
-            <TableHead className="text-center">Instrument</TableHead>
-            <TableHead className="text-center text-[20px]">
-              IEM|MD|Inst Pack
-            </TableHead>
+            <TableHead className="text-center">Role</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {props.band1.map((person) => (
+          {broadList.map((person) => (
             <TableRow key={person.id} className="lg:font-normal lg:text-2xl">
-              <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
+              <TableCell className="text-lg lg:font-normal lg:text-2xl  flex flex-row items-center gap-x-3">
                 <Image
                   src={person.photo}
                   width={50}
@@ -46,13 +48,23 @@ export default function BandTable(props) {
               </TableCell>
               <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
                 {person.position}
-              </TableCell>
-              <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
-                {person.notes}
               </TableCell>
             </TableRow>
           ))}
-          {props.band2.map((person) => (
+        </TableBody>
+      </Table>
+      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
+        Online
+      </h2>
+      <Table>
+        <TableHeader className="text-xl lg:font-normal lg:text-2xl">
+          <TableRow>
+            <TableHead>Person</TableHead>
+            <TableHead className="text-center">Role</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {props.onlinePeople.map((person) => (
             <TableRow key={person.id} className="lg:font-normal lg:text-2xl">
               <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
                 <Image
@@ -66,9 +78,6 @@ export default function BandTable(props) {
               </TableCell>
               <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
                 {person.position}
-              </TableCell>
-              <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
-                {person.notes}
               </TableCell>
             </TableRow>
           ))}

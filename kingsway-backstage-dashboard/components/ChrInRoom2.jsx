@@ -11,31 +11,30 @@ import {
 
 import Image from "next/image"
 
-export default function VocalsTable(props) {
-  const getRidForCamVals = ["Song Leader - Female", "Song Leader - Male"]
+export default function ChrInRoom2(props) {
+  const getRidForCamVals = ["In Room Tech Coordinator", "FOH Sound"]
 
   // console.log(props.people)
 
-  let vocalsList = []
+  let cameraList = []
 
-  vocalsList = props.people.filter(
+  cameraList = props.people.filter(
     (person) => !getRidForCamVals.includes(person.position)
   )
   return (
-    <div className="row-start-1 col-start-1 flex shrink flex-col order-1">
-      <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
-        Vocals
-      </h2>
+    <div className="row-start-2 col-start-2 flex flex-col order-4">
+      <h3 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
+        {`In Room (cont'd)`}
+      </h3>
       <Table className="">
         <TableHeader>
           <TableRow className="text-xl lg:font-normal lg:text-2xl">
             <TableHead>Person</TableHead>
-            {/* <TableHead>Role</TableHead> */}
-            <TableHead className="text-center">VOX|IEM|MD</TableHead>
+            <TableHead className="text-center">Role</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {vocalsList.map((person) => (
+          {cameraList.map((person) => (
             <TableRow key={person.id} className="lg:font-normal lg:text-2xl">
               <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
                 <Image
@@ -47,9 +46,8 @@ export default function VocalsTable(props) {
                 />
                 {person.name}
               </TableCell>
-              {/* <TableCell>{person.position}</TableCell> */}
               <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
-                {person.notes}
+                {person.position}
               </TableCell>
             </TableRow>
           ))}

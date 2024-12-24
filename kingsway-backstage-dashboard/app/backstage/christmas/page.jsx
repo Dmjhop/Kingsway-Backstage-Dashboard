@@ -1,7 +1,7 @@
 "use server"
 import backImage from "@/public/backstagebackground.png"
 import { revalidateDashboard } from "@/app/actions/revalidate"
-import ClientDashboard from "@/components/ClientDashboard"
+import ChristmasDashboard from "@/components/pageui/ChristmasDashboard"
 import "dotenv/config"
 import { getChristmasServicePlan } from "@/app/christmasdata/getChristmasServicePlan"
 import { getChrBand } from "@/app/christmasdata/getChrBand"
@@ -41,7 +41,7 @@ export default async function Christmas() {
   // await revalidateDashboard()
 
   return (
-    <ClientDashboard
+    <ChristmasDashboard
       initialPlan={currentService}
       initialWorship={worshipPCOData}
       initialBand={bandPCOData}
