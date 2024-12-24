@@ -1,7 +1,7 @@
 "use server"
 import backImage from "@/public/backstagebackground.png"
 import { revalidateDashboard } from "@/app/actions/revalidate"
-import ClientDashboard from "@/components/ClientDashboard"
+import ClientDashboard from "@/components/pageui/ClientDashboard"
 import "dotenv/config"
 import { getServicePlan } from "@/app/data/getServicePlan"
 import { getBand } from "@/app/data/getBand"
