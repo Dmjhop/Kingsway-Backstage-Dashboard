@@ -23,10 +23,10 @@ export default function ChrOnlineBroadTable(props) {
   )
   return (
     <div className=" row-start-2 col-start-4 flex shrink flex-col order-7">
-      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
-        Broadcast
+      <h2 className=" h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
+        Broadcast & Online
       </h2>
-      <Table className="h-[100px] ">
+      <Table className="">
         <TableHeader>
           <TableRow className="text-xl lg:font-normal lg:text-2xl">
             <TableHead>Person</TableHead>
@@ -53,9 +53,7 @@ export default function ChrOnlineBroadTable(props) {
           ))}
         </TableBody>
       </Table>
-      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
-        Online
-      </h2>
+
       <Table>
         <TableHeader className="text-xl lg:font-normal lg:text-2xl">
           <TableRow>

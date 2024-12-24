@@ -387,7 +387,8 @@ export default function ClientDashboard({
           </div>
         )}
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-4 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[700px_minmax(900px,_1fr)]
+          className="flex flex-col lg:grid  lg:grid-cols-4 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
+
       ">
           {/* VOCALS TEAM CHART */}
           <VocalsTable people={vocalList} styles={picStyles} />

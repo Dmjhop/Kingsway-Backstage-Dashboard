@@ -15,6 +15,7 @@ import WeatherBlock from "@/components/WeatherBlock"
 import VerseOfTheDay from "@/components/VerseOfTheDay"
 import ChrVOTD from "@/components/ChrVOTD"
 import Snowfall from "react-snowfall"
+import { useSpring, animated } from "@react-spring/web"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
@@ -74,7 +75,20 @@ export default function ChristmasDashboard({
     return () => clearInterval(intervalId) // Clear interval on component unmount
   }, [])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
-
+  //   const fadeIn = useSpring({
+  //     from: { opacity: 0 },
+  //     to: { opacity: 1 },
+  //     delay: 5000,
+  //     config: {
+  //       duration: 1000,
+  //       // 2 seconds for fade in/out
+  //     },
+  //     //: [1000, 5000, 17000], // Delays between phases
+  //     loop: {
+  //       reverse: true, // Makes it go back and forth
+  //       delay: 10000, // Adds delay before reversing (hold time)
+  //     },
+  //   })
   //   useEffect(() => {
   //     const interval = setInterval(() => {
   //       setIsVisible((prevIsVisible) => !prevIsVisible)
@@ -281,8 +295,8 @@ export default function ChristmasDashboard({
   // ? ALPHABETIZING THEM
   const sortedOnlineProductionPeopleList = onlineProductionPeopleList.sort(
     (a, b) => {
-      if (a.position > b.position) return -1
-      if (a.position < b.position) return 1
+      if (a.position < b.position) return -1
+      if (a.position > b.position) return 1
       return 0
     }
   )
@@ -335,7 +349,7 @@ export default function ChristmasDashboard({
     left: "0",
     width: "100%",
     height: "100%",
-    backgroundColor: `rgba(0, 0, 0, 0.5)`,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -347,13 +361,38 @@ export default function ChristmasDashboard({
 
   return (
     <div>
-      <Snowfall />
+      <Snowfall style={{ zIndex: "-1" }} />
       <div className="max-h-screen">
         {/* Header Component */}
         <header className=" text-[#d14150] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
+          <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl drop-shadow-[0px_0px_12px_rgba(255,248,183,0.65)]">
+            <span className="text-[#d14150]">M</span>
+            <span className="text-[#76b972]">E</span>
+            <span className="text-[#d14150]">R</span>
+            <span className="text-[#76b972]">R</span>
+            <span className="text-[#d14150]">Y</span>
+            &nbsp;
+            <span className="text-[#76b972]">C</span>
+            <span className="text-[#d14150]">H</span>
+            <span className="text-[#76b972]">R</span>
+            <span className="text-[#d14150]">I</span>
+            <span className="text-[#76b972]">S</span>
+            <span className="text-[#d14150]">T</span>
+            <span className="text-[#76b972]">M</span>
+            <span className="text-[#d14150]">A</span>
+            <span className="text-[#76b972]">S</span>
+            &nbsp;
+            <span className="text-[#d14150]">T</span>
+            <span className="text-[#76b972]">E</span>
+            <span className="text-[#d14150]">A</span>
+            <span className="text-[#76b972]">M</span>
+            <span className="text-[#d14150]">!</span>
+          </h1>
+          {/* #76b972 */}
+          {/* #fff8b7 */}
           {dateOfService.map((dispDate) => (
             <h2
               key={dispDate}
@@ -379,18 +418,18 @@ export default function ChristmasDashboard({
             </div>
           </motion.div>
         )} */}
-        {isVisible && (
-          <div style={layoutStyles}>
-            <Image
-              src={stageLayout}
-              width={1920}
-              height={1080}
-              alt="This is the stage layout"
-            />
-          </div>
-        )}
+
+        {/* <animated.div style={{ ...fadeIn, ...layoutStyles }}>
+          <Image
+            src={stageLayout}
+            width={1920}
+            height={1080}
+            alt="This is the stage layout"
+          />
+        </animated.div> */}
+
         <div
-          className="flex flex-col lg:grid lg:gap-1 lg:grid-cols-4 lg:mx-8 lg:mt-5 lg:px-6 lg:mb-10 lg:grid-rows-[700px_minmax(900px,_1fr)]
+          className="flex flex-col lg:grid  lg:grid-cols-4 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
       ">
           {/* VOCALS TEAM CHART */}
           <VocalsTable people={vocalList} styles={picStyles} />

@@ -33,6 +33,7 @@
     "react-hook-form": "^7.50.0",
     "react-resizable-panels": "^1.0.10",
     "react-snowfall": "^2.2.0",
+    "react-spring": "^9.7.5",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "websocket": "^1.0.35",
