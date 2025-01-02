@@ -24,31 +24,32 @@ let productionPCOData = []
 let trueAttachment
 
 export default async function Christmas() {
-  const currentService = await getChristmasServicePlan()
+  // const currentService = await getChristmasServicePlan()
 
-  worshipPCOData = await getChrVocals(currentService)
+  // worshipPCOData = await getChrVocals(currentService)
 
-  bandPCOData = await getChrBand(currentService)
+  // bandPCOData = await getChrBand(currentService)
 
-  orchestraPCOData = await getChrOrchestra(currentService)
+  // orchestraPCOData = await getChrOrchestra(currentService)
 
-  productionPCOData = await getChrProduction(currentService)
+  // productionPCOData = await getChrProduction(currentService)
 
-  campusPeopleData = await getChrCampus(currentService)
+  // campusPeopleData = await getChrCampus(currentService)
 
-  trueAttachment = await getChrLayout(currentService)
+  // trueAttachment = await getChrLayout(currentService)
 
   // await revalidateDashboard()
 
   return (
-    <ChristmasDashboard
-      initialPlan={currentService}
-      initialWorship={worshipPCOData}
-      initialBand={bandPCOData}
-      initialOrchestra={orchestraPCOData}
-      initialProduction={productionPCOData}
-      initialCampus={campusPeopleData}
-      initialLayout={trueAttachment}
-    />
+    // <ChristmasDashboard
+    //   initialPlan={currentService}
+    //   initialWorship={worshipPCOData}
+    //   initialBand={bandPCOData}
+    //   initialOrchestra={orchestraPCOData}
+    //   initialProduction={productionPCOData}
+    //   initialCampus={campusPeopleData}
+    //   initialLayout={trueAttachment}
+    // />
+    <div>Christmas 2025 woooooo!</div>
   )
 }
