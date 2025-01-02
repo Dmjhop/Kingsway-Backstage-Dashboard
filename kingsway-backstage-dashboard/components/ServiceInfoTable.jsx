@@ -14,7 +14,7 @@ import Image from "next/image"
 export default function ServiceInfoTable(props) {
   return (
     <div className="row-start-1 col-start-3 flex shrink flex-col  lg:order-3">
-      <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
+      <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
         Service Info
       </h2>
       <Table>

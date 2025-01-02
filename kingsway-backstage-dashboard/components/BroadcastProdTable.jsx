@@ -25,7 +25,7 @@ export default function BroadcastProdTable(props) {
   // console.log("This is the result: " + broadList)
   return (
     <div className="row-start-2 col-start-2 flex shrink flex-col order-5">
-      <h2 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">
+      <h2 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
         Broadcast
       </h2>
       <Table className="h-[100px] ">

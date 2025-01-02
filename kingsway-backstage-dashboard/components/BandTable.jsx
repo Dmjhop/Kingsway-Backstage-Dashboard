@@ -18,7 +18,7 @@ export default function BandTable(props) {
   // }
   return (
     <div className="row-start-1 col-start-2 flex shrink flex-col order-3 lg:order-2">
-      <h2 className="text-center text-[#d14150] text-[32px] font-bold  mx-auto">
+      <h2 className="text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
         Band
       </h2>
       <Table className="">
