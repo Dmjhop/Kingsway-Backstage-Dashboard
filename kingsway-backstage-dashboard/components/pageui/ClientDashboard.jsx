@@ -271,8 +271,12 @@ export default function ClientDashboard({
     (person) => !getRidOnlineVals.includes(person.position)
   )
 
+  console.log("sortedVocalList before filtering:", sortedVocalList)
+
   vocalList = sortedVocalList.filter(
-    (person) => !getRidVocalVals.includes(person.position)
+    (person) =>
+      !getRidVocalVals.includes(person.position) ||
+      ["Song Leader - Male", "Song Leader - Female"].includes(person.position)
   )
 
   // ? ALPHABETIZING THEM
