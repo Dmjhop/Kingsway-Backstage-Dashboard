@@ -45,7 +45,7 @@ export default function ServiceInfoTable(props) {
           </TableRow> */}
           {props.people.map((person) => (
             <TableRow
-              key={person.name}
+              key={person.id}
               className="text-lg lg:font-normal lg:text-2xl">
               <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
                 <Image

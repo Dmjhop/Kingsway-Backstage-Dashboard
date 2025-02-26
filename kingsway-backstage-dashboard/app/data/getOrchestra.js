@@ -15,5 +15,9 @@ export async function getOrchestra(currentService) {
     `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=5674102&per_page=30`,
     requestOptions
   )
-  return res.json()
+  if (!res.ok) {
+    return []
+  } else {
+    return res.json()
+  }
 }

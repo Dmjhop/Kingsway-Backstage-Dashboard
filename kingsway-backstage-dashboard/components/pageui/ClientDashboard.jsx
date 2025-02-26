@@ -140,7 +140,7 @@ export default function ClientDashboard({
     // console.log(orchestraPeopleList)
   } else {
     orchestraPeopleList = []
-    console.error("pcoORCHESTRAData is undefined or empty")
+    // console.error("pcoORCHESTRAData is undefined or empty")
   }
 
   // ! ---------------- PRODUCTION TEAM DATA---------------
@@ -358,7 +358,7 @@ export default function ClientDashboard({
               {dispDate.todayDate}
             </h2>
           ))}
-          <ClockComp />
+          <ClockComp suppressHydrationWarning />
         </header>
         {/* Dashboard Entire Component */}
         {/* {isVisible && (
