@@ -92,7 +92,7 @@ export default function ClientDashboard({
     console.error("pcoDateData is undefined or empty")
   }
 
-  // ! WORSHIP TEAM DATA
+  // ! -------------- VOCAL TEAM DATA ----------------
   if (worshipPCOData && worshipPCOData.data && worshipPCOData.data.length > 0) {
     worshipPeopleList = worshipPCOData.data.map((member) => ({
       id: member.id,
@@ -189,8 +189,28 @@ export default function ClientDashboard({
   )
   // ? ALPHABETIZING THEM
   let sortedVocalList = filteredVocals.sort((a, b) => {
-    if (a.notes < b.notes) return -1
-    if (a.notes > b.notes) return 1
+    // Handle cases where notes are undefined or null
+    const aNotes = a.notes || ""
+    const bNotes = b.notes || ""
+
+    // Extract Vox numbers if present
+    const aMatches = aNotes.match(/Vox (\d+)/)
+    const bMatches = bNotes.match(/Vox (\d+)/)
+
+    // If both have Vox numbers, compare them numerically
+    if (aMatches && bMatches) {
+      const aVoxNum = parseInt(aMatches[1], 10)
+      const bVoxNum = parseInt(bMatches[1], 10)
+      return aVoxNum - bVoxNum
+    }
+
+    // If only one has a Vox number, prioritize it
+    if (aMatches) return -1
+    if (bMatches) return 1
+
+    // Default to standard string comparison
+    if (aNotes < bNotes) return -1
+    if (aNotes > bNotes) return 1
     return 0
   })
 
@@ -198,6 +218,7 @@ export default function ClientDashboard({
   const filteredBand = bandPeopleList.filter(
     (item) => item.status !== "D" && item.status !== "U"
   )
+  // ? ALPHABETIZING THEM
   const sortedBand = filteredBand.sort((a, b) => {
     if (a.position < b.position) return -1
     if (a.position > b.position) return 1
@@ -255,8 +276,6 @@ export default function ClientDashboard({
     "Broadcast Audio",
   ]
   const getRidCampusVals = ["Team Rally Leader"]
-
-  const getRidVocalVals = ["Choir"]
   let vocalList = []
 
   inRoomProductionPeopleList = filteredProduction.filter(
@@ -271,9 +290,23 @@ export default function ClientDashboard({
     (person) => !getRidOnlineVals.includes(person.position)
   )
 
-  vocalList = sortedVocalList.filter(
-    (person) => !getRidVocalVals.includes(person.position)
-  )
+  vocalList = sortedVocalList.filter(checkChoirAndLeader)
+
+  // vocalList = sortedVocalList.filter(checkChoirAndLeader)
+  // ! Takes out All Choir Members
+  function checkChoirAndLeader(person) {
+    if (person.position === "Vocals") {
+      return person
+    }
+    if (person.position === "Song Leader - Male") {
+      return person
+    }
+    if (person.position === "Song Leader - Female") {
+      return person
+    }
+  }
+  // If a person is on the choir, then remove them from the vocal list
+  // If a person is on the choir, AND Leading in worship, then keep them in the vocal list
 
   // ? ALPHABETIZING THEM
   const sortedOnlineProductionPeopleList = onlineProductionPeopleList.sort(

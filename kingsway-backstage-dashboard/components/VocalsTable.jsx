@@ -14,7 +14,7 @@ import Image from "next/image"
 export default function VocalsTable(props) {
   const getRidForCamVals = [""]
 
-  // console.log(props.people)
+  console.log(props.people)
 
   let vocalsList = []
 
