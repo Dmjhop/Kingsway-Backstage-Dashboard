@@ -12,7 +12,7 @@ const requestOptions = {
 
 export async function getCampus(currentService) {
   const res = await fetch(
-    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=2620409&per_page=30`,
+    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=2620409&per_page=50`,
     requestOptions
   )
   return res.json()
