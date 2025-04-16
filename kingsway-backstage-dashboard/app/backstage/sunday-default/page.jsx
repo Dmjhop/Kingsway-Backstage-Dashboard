@@ -10,6 +10,7 @@ import { getOrchestra } from "@/app/data/getOrchestra"
 import { getProduction } from "@/app/data/getProduction"
 import { getVocals } from "@/app/data/getVocals"
 import { getLayout } from "@/app/data/getLayout"
+import { getGFServicePlan } from "@/app/data/getGFServicePlan"
 require("dotenv").config()
 
 let worshipPCOData = []
@@ -20,8 +21,8 @@ let productionPCOData = []
 let trueAttachment
 
 export default async function BackstageView() {
-  const currentService = await getServicePlan()
-
+  const currentService = await getGFServicePlan()
+  console.log(currentService.data.attributes.dates)
   worshipPCOData = await getVocals(currentService)
 
   bandPCOData = await getBand(currentService)

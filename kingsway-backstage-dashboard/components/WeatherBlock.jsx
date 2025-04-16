@@ -25,9 +25,9 @@ export default function WeatherBlock(props) {
       if (props.title === `CHL`) {
         weatherLAT = "39.92766879306311"
         weatherLON = "-75.01340043044847"
-      } else if (props.title === `GLB`) {
-        weatherLAT = `39.68428434246347`
-        weatherLON = `-75.100563296308567`
+      } else if (props.title === `WTP`) {
+        weatherLAT = `39.73542971063585`
+        weatherLON = `-75.04753446584543`
       }
       const res = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${weatherLAT}&lon=${weatherLON}&appid=${key}&units=imperial`
@@ -68,3 +68,5 @@ export default function WeatherBlock(props) {
     </div>
   )
 }
+
+// 39.73542971063585, -75.04753446584543

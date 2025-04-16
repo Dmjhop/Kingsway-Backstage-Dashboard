@@ -62,6 +62,8 @@ export default function ClientDashboard({
   let broadcastProductionPeopleList
   let onlineProductionPeopleList
   let todayDate = []
+  console.log(currentService.data.attributes.dates)
+  let updatedDate = currentService.data.attributes.dates
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -82,17 +84,20 @@ export default function ClientDashboard({
   }, [])
 
   // * COMMENT/UNCOMMENT THIS ^^ABOVE^^ WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
-  if (currentService && currentService.data && currentService.data.length > 0) {
-    dateOfService = currentService.data.map((item) => ({
-      todayDate: item.attributes.dates,
-    }))
-    // console.log(dateOfService)
-  } else {
-    todayDate = []
-    console.error("pcoDateData is undefined or empty")
-  }
 
-  // ! WORSHIP TEAM DATA
+  // ! -------------- PLAN SERVICE DATE ----------------
+  // if (currentService && currentService.data && currentService.data.length > 0) {
+  //   dateOfService = currentService.data.attributes.dates
+  //   // dateOfService = currentService.data.map((item) => ({
+  //   //   todayDate: item.attributes.dates,
+  //   // }))
+  //   console.log(dateOfService)
+  // } else {
+  //   todayDate = []
+  //   console.error("pcoDateData is undefined or empty")
+  // }
+
+  // ! -------------- VOCALS TEAM DATA ----------------
   if (worshipPCOData && worshipPCOData.data && worshipPCOData.data.length > 0) {
     worshipPeopleList = worshipPCOData.data.map((member) => ({
       id: member.id,
@@ -140,7 +145,7 @@ export default function ClientDashboard({
     // console.log(orchestraPeopleList)
   } else {
     orchestraPeopleList = []
-    console.error("pcoORCHESTRAData is undefined or empty")
+    // console.error("pcoORCHESTRAData is undefined or empty")
   }
 
   // ! ---------------- PRODUCTION TEAM DATA---------------
@@ -271,7 +276,7 @@ export default function ClientDashboard({
     (person) => !getRidOnlineVals.includes(person.position)
   )
 
-  console.log("sortedVocalList before filtering:", sortedVocalList)
+  // console.log("sortedVocalList before filtering:", sortedVocalList)
 
   vocalList = sortedVocalList.filter(
     (person) =>
@@ -355,13 +360,16 @@ export default function ClientDashboard({
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
-          {dateOfService.map((dispDate) => (
+          {/* {dateOfService.map((dispDate) => (
             <h2
               key={dispDate}
               className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
               {dispDate.todayDate}
             </h2>
-          ))}
+          ))} */}
+          <h2 className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
+            {updatedDate}
+          </h2>
           <ClockComp />
         </header>
         {/* Dashboard Entire Component */}
@@ -405,8 +413,8 @@ export default function ClientDashboard({
 
           {/* SERVICE INFO TEAM CHART */}
           <ServiceInfoTable
-            sermonSeriesTitle={currentService.data[0].attributes.series_title}
-            sermonTitle={currentService.data[0].attributes.title}
+            sermonSeriesTitle={currentService.data.attributes.series_title}
+            sermonTitle={currentService.data.attributes.title}
             people={filteredCampus}
             styles={picStyles}
           />
@@ -418,7 +426,7 @@ export default function ClientDashboard({
               &nbsp;
               <div className="flex flex-row justify-evenly">
                 <WeatherBlock title={`CHL`}></WeatherBlock>
-                <WeatherBlock title={`GLB`}></WeatherBlock>
+                <WeatherBlock title={`WTP`}></WeatherBlock>
               </div>
             </div>
             &nbsp;

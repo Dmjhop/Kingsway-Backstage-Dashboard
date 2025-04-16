@@ -17,7 +17,7 @@ let trueAttachment
 
 export async function getLayout(currentService) {
   const res = await fetch(
-    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/attachments.data[0]`,
+    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data.id}/attachments.data[0]`,
     requestOptions
   )
   attachmentData = await res.json()
