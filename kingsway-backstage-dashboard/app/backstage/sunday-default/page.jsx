@@ -21,8 +21,8 @@ let productionPCOData = []
 let trueAttachment
 
 export default async function BackstageView() {
-  const currentService = await getGFServicePlan()
-  console.log(currentService.data.attributes.dates)
+  const currentService = await getServicePlan()
+  console.log(currentService.data.attributes)
   worshipPCOData = await getVocals(currentService)
 
   bandPCOData = await getBand(currentService)

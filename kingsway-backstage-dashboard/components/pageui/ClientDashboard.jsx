@@ -62,8 +62,8 @@ export default function ClientDashboard({
   let broadcastProductionPeopleList
   let onlineProductionPeopleList
   let todayDate = []
-  console.log(currentService.data.attributes.dates)
-  let updatedDate = currentService.data.attributes.dates
+  console.log(currentService.data[0].attributes.dates)
+  let updatedDate = currentService.data[0].attributes.dates
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -413,8 +413,8 @@ export default function ClientDashboard({
 
           {/* SERVICE INFO TEAM CHART */}
           <ServiceInfoTable
-            sermonSeriesTitle={currentService.data.attributes.series_title}
-            sermonTitle={currentService.data.attributes.title}
+            sermonSeriesTitle={currentService.data[0].attributes.series_title}
+            sermonTitle={currentService.data[0].attributes.title}
             people={filteredCampus}
             styles={picStyles}
           />
