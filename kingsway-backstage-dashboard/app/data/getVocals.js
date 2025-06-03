@@ -10,10 +10,14 @@ const requestOptions = {
   // cache: "force-cache",
 }
 
-export async function getVocals(currentService) {
+export async function getVocals(currentService, teamId = "5767747") {
+  const serviceTypeId = process.env.SUNDAY_SERVICE_TYPE_ID
   const res = await fetch(
-    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=5767747&per_page=50`,
-    requestOptions
+    `https://api.planningcenteronline.com/services/v2/service_types/${serviceTypeId}/plans/${currentService.data[0].id}/team_members?include=team&where[team_id]=${teamId}&per_page=50`,
+    {
+      ...requestOptions,
+      next: { tags: [`dashboard-${serviceTypeId}`], revalidate: 60 },
+    }
   )
   return res.json()
 }

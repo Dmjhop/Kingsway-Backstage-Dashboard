@@ -130,3 +130,6 @@ export default async function BackstageWorshipNightView() {
     />
   )
 }
+
+
+check out attachments because I might be able to open the file itself and then show it in a clearer less blurry way

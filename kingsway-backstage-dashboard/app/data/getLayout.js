@@ -16,9 +16,14 @@ let attachmentData
 let trueAttachment
 
 export async function getLayout(currentService) {
+  const serviceTypeId = process.env.SUNDAY_SERVICE_TYPE_ID
+
   const res = await fetch(
-    `https://api.planningcenteronline.com/services/v2/service_types/285406/plans/${currentService.data[0].id}/attachments.data[0]`,
-    requestOptions
+    `https://api.planningcenteronline.com/services/v2/service_types/${serviceTypeId}/plans/${currentService.data[0].id}/attachments.data[0]`,
+    {
+      ...requestOptions,
+      next: { tags: [`dashboard-${serviceTypeId}`], revalidate: 60 },
+    }
   )
   attachmentData = await res.json()
 

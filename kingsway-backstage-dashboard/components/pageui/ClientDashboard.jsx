@@ -15,14 +15,15 @@ import Snowfall from "react-snowfall"
 
 import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
+import { updateDashboardData } from "@/app/actions/updateDashboardData"
 import defaultLayoutImg from "@/public/No Current Layout.png"
 
 // React Server Components
 import * as motion from "framer-motion/client"
-import "dotenv/config"
-require("dotenv").config()
 
 export default function ClientDashboard({
+  serviceType = "sunday",
+  serviceConfig,
   initialPlan,
   initialWorship,
   initialBand,
@@ -66,12 +67,12 @@ export default function ClientDashboard({
   let updatedDate = currentService.data[0].attributes.dates
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      location.reload()
-    }, 44000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
-    revalidateDashboard()
+    const intervalId = setInterval(async () => {
+      await updateDashboardData(serviceType)
+    }, 10000) // 5 minutes in milliseconds | 10 minutes =  10 * 60 * 1000 | 5 minutes = 5 * 60 * 1000 | 1 min 1/2 = 90000 | 30 seconds = 30000 | 10 seconds = 10000
+    // revalidateDashboard()
     return () => clearInterval(intervalId) // Clear interval on component unmount
-  }, [])
+  }, [serviceType])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
   useEffect(() => {
