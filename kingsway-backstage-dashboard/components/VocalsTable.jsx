@@ -21,6 +21,8 @@ export default function VocalsTable(props) {
   vocalsList = props.people.filter(
     (person) => !getRidForCamVals.includes(person.position)
   )
+
+  console.log(vocalsList)
   return (
     <div className="row-start-1 col-start-1 flex shrink flex-col order-1">
       <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
