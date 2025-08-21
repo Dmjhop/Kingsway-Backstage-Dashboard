@@ -75,15 +75,14 @@ export default function WorshipNight() {
   ]
 
   const layoutStyles = {
-    position: "fixed",
-    top: "170px",
-    left: "850px",
+    position: "static",
+    top: "0px",
+    left: "1100px",
     width: "100%",
     height: "100%",
     display: "flex",
     // justifyContent: "center",
     alignItems: "center",
-    zIndex: "1000",
     borderRadius: "20px 20px 20px 20px",
   }
 
@@ -198,18 +197,22 @@ export default function WorshipNight() {
             </Table>
           </div>
         </div>
-        <span style={layoutStyles}>
-          <Image
-            src={"/StageLayout.png"}
-            width={1280}
-            height={800}
-            alt="This is the stage layout"
-            style={{
-              borderRadius: "20px 20px 20px 20px",
-              border: "white 5px solid",
-            }}
-          />
-        </span>
+        <Image
+          src={"/StageLayout.png"}
+          width={1280}
+          height={800}
+          alt="This is the stage layout"
+          style={{
+            borderRadius: "20px 20px 20px 20px",
+            border: "white 5px solid",
+            position: "relative",
+            bottom: "100px",
+            left: "1100px",
+            width: "50%",
+            height: "50%",
+            display: "flex",
+          }}
+        />
       </div>
     </div>
   )
