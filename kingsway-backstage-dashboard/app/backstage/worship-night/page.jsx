@@ -99,9 +99,10 @@ export default function WorshipNight() {
         <header className=" text-[#7cd656] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
           <h1
             className={`${worshipFont.className} text-3xl text-center lg:font-extrabold lg:text-5xl`}>
-            behold. worship nite dashboard
+            behold. worship nite - south dashboard
           </h1>
-          <h2 className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
+          <h2
+            className={`${worshipFont.className} text-2xl text-center lg:font-extrabold lg:text-5xl order-1`}>
             {today}
           </h2>
           <ClockComp />
@@ -238,7 +239,24 @@ export default function WorshipNight() {
                 display: "flex",
               }}
             />
+            <Image
+              src={"/kwlogo.png"}
+              width={540}
+              height={200}
+              alt="This is the stage layout"
+              style={{
+                // borderRadius: "20px 20px 20px 20px",
+                // border: "white 5px solid",
+                // position: "relative",
+                // bottom: "230px",
+                // left: "1200px",
+                width: "95%",
+                height: "100%",
+                display: "flex",
+              }}
+            />
           </div>
+          <div className="row-start-2 col-start-2 flex flex-col order-1 lg:order-2"></div>
         </div>
         <Image
           src={"/StageLayout.png"}
@@ -247,10 +265,10 @@ export default function WorshipNight() {
           alt="This is the stage layout"
           style={{
             borderRadius: "20px 20px 20px 20px",
-            border: "white 5px solid",
-            position: "relative",
-            bottom: "430px",
-            left: "1200px",
+            border: "#7cd656 5px solid",
+            position: "fixed",
+            bottom: "100px",
+            left: "700px",
             width: "50%",
             height: "50%",
             display: "flex",
