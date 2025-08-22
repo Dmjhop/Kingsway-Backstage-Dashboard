@@ -11,6 +11,11 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import Image from "next/image"
+import localFont from "next/font/local"
+
+const worshipFont = localFont({
+  src: "./futuraCyrillicBold.ttf",
+})
 
 export default function WorshipNight() {
   const today = new Date().toLocaleDateString("en-US", {
@@ -91,9 +96,10 @@ export default function WorshipNight() {
       {/* <Snowfall /> */}
       <div className="max-h-screen">
         {/* Header Component */}
-        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
-          <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
-            Kingsway Church Worship Dashboard
+        <header className=" text-[#7cd656] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
+          <h1
+            className={`${worshipFont.className} text-3xl text-center lg:font-extrabold lg:text-5xl`}>
+            behold. worship nite dashboard
           </h1>
           <h2 className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
             {today}
@@ -105,16 +111,21 @@ export default function WorshipNight() {
 
       ">
           <div className="row-start-1 col-start-1 flex shrink flex-col order-1 lg:order-1">
-            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+            <h2
+              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Vocals
             </h2>
             {/* VOCAL LISTING */}
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead>Person</TableHead>
+                  <TableHead className={`${worshipFont.className}`}>
+                    Person
+                  </TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className="text-center">VOX|IEM</TableHead>
+                  <TableHead className={`${worshipFont.className} text-center`}>
+                    VOX|IEM
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -122,11 +133,13 @@ export default function WorshipNight() {
                   <TableRow
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
@@ -136,15 +149,18 @@ export default function WorshipNight() {
           </div>
           {/* INSTRUMENT PACKS */}
           <div className="row-start-1 col-start-2 flex shrink flex-col order-2 lg:order-2">
-            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+            <h2
+              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Instrument Packs
             </h2>
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead>Person</TableHead>
+                  <TableHead className={`${worshipFont.className} `}>
+                    Person
+                  </TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className="text-center">
+                  <TableHead className={`${worshipFont.className} text-center`}>
                     Instrument Packs
                   </TableHead>
                 </TableRow>
@@ -154,11 +170,13 @@ export default function WorshipNight() {
                   <TableRow
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
@@ -168,15 +186,20 @@ export default function WorshipNight() {
           </div>
           {/* MUSIC DIRECTORS*/}
           <div className="row-start-1 col-start-3 flex shrink flex-col order-3 lg:order-3">
-            <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+            <h2
+              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               MDs
             </h2>
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead>Person</TableHead>
+                  <TableHead className={`${worshipFont.className} `}>
+                    Person
+                  </TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className="text-center">MDs</TableHead>
+                  <TableHead className={`${worshipFont.className} text-center`}>
+                    MDs
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -184,17 +207,37 @@ export default function WorshipNight() {
                   <TableRow
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
-                    <TableCell className="text-lg lg:font-normal lg:text-2xl text-center">
+                    <TableCell
+                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
+          </div>
+          <div className="row-start-2 col-start-1 flex shrink flex-col order-3 lg:order-4">
+            <Image
+              src={"/njworshiplogo.png"}
+              width={540}
+              height={200}
+              alt="This is the stage layout"
+              style={{
+                // borderRadius: "20px 20px 20px 20px",
+                // border: "white 5px solid",
+                // position: "relative",
+                // bottom: "230px",
+                // left: "1200px",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+              }}
+            />
           </div>
         </div>
         <Image
@@ -206,7 +249,7 @@ export default function WorshipNight() {
             borderRadius: "20px 20px 20px 20px",
             border: "white 5px solid",
             position: "relative",
-            bottom: "230px",
+            bottom: "430px",
             left: "1200px",
             width: "50%",
             height: "50%",
