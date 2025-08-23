@@ -265,7 +265,7 @@ export default function WorshipNight() {
             border: "#7cd656 7px solid",
             position: "fixed",
             bottom: "100px",
-            left: "1000px",
+            left: "1200px",
             width: "50%",
             height: "56.25%",
             display: "flex",
