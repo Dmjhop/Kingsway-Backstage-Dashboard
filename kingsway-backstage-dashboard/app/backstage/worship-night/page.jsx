@@ -15,6 +15,7 @@ import localFont from "next/font/local"
 
 const worshipFont = localFont({
   src: "./futuraCyrillicBold.ttf",
+  variable: "--font-futura",
 })
 
 export default function WorshipNight() {
@@ -28,27 +29,27 @@ export default function WorshipNight() {
     {
       id: "1",
       name: "Kait",
-      notes: "VOX/IEM 1",
+      notes: "VOX | IEM 1",
     },
     {
       id: "2",
       name: "Tami",
-      notes: "VOX/IEM 2",
+      notes: "VOX | IEM 2",
     },
     {
       id: "3",
       name: "Devin",
-      notes: "VOX/IEM 3",
+      notes: "VOX | IEM 3",
     },
     {
       id: "4",
       name: "Rachel",
-      notes: "VOX/IEM 4",
+      notes: "VOX | IEM 4",
     },
     {
       id: "5",
       name: "Vic",
-      notes: "VOX/IEM 5",
+      notes: "VOX | IEM 5",
     },
     { id: "6", name: "Gui | John | Brendan | Gabe | Yaaseen", notes: "Wired" },
   ]
@@ -92,39 +93,37 @@ export default function WorshipNight() {
   }
 
   return (
-    <div>
+    <div className={worshipFont.variable}>
       {/* <Snowfall /> */}
       <div className="max-h-screen">
         {/* Header Component */}
         <header className=" text-[#7cd656] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
           <h1
-            className={`${worshipFont.className} text-3xl text-center lg:font-extrabold lg:text-5xl`}>
+            className={`text-3xl text-center lg:font-extrabold lg:text-5xl font-futura`}>
             behold. worship nite - south dashboard
           </h1>
           <h2
-            className={`${worshipFont.className} text-2xl text-center lg:font-extrabold lg:text-5xl order-1`}>
+            className={`text-2xl text-center lg:font-extrabold lg:text-5xl order-1`}>
             {today}
           </h2>
           <ClockComp />
         </header>
         <div
-          className="flex flex-col lg:grid  lg:grid-cols-3 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
+          className="flex flex-col lg:grid  lg:grid-cols-5 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
 
       ">
           <div className="row-start-1 col-start-1 flex shrink flex-col order-1 lg:order-1">
             <h2
-              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
+              className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Vocals
             </h2>
             {/* VOCAL LISTING */}
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead className={`${worshipFont.className}`}>
-                    Person
-                  </TableHead>
+                  <TableHead className={`font-futura`}>Person</TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className={`${worshipFont.className} text-center`}>
+                  <TableHead className={`font-futura text-center`}>
                     VOX|IEM
                   </TableHead>
                 </TableRow>
@@ -135,12 +134,12 @@ export default function WorshipNight() {
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
@@ -149,19 +148,17 @@ export default function WorshipNight() {
             </Table>
           </div>
           {/* INSTRUMENT PACKS */}
-          <div className="row-start-1 col-start-2 flex shrink flex-col order-2 lg:order-2">
+          <div className="row-start-1 col-start-2 col-span-2 flex shrink flex-col order-2 lg:order-2">
             <h2
-              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
+              className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Instrument Packs
             </h2>
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead className={`${worshipFont.className} `}>
-                    Person
-                  </TableHead>
+                  <TableHead className={`font-futura `}>Person</TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className={`${worshipFont.className} text-center`}>
+                  <TableHead className={`font-futura text-center`}>
                     Instrument Packs
                   </TableHead>
                 </TableRow>
@@ -172,12 +169,12 @@ export default function WorshipNight() {
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
@@ -186,19 +183,17 @@ export default function WorshipNight() {
             </Table>
           </div>
           {/* MUSIC DIRECTORS*/}
-          <div className="row-start-1 col-start-3 flex shrink flex-col order-3 lg:order-3">
+          <div className="row-start-1 col-start-4 col-span-2 flex shrink flex-col order-3 lg:order-3">
             <h2
-              className={`${worshipFont.className} text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
+              className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               MDs
             </h2>
             <Table className="">
               <TableHeader>
                 <TableRow className="text-xl lg:font-normal lg:text-2xl">
-                  <TableHead className={`${worshipFont.className} `}>
-                    Person
-                  </TableHead>
+                  <TableHead className={`font-futura`}>Person</TableHead>
                   {/* <TableHead>Role</TableHead> */}
-                  <TableHead className={`${worshipFont.className} text-center`}>
+                  <TableHead className={`font-futura text-center`}>
                     MDs
                   </TableHead>
                 </TableRow>
@@ -209,12 +204,12 @@ export default function WorshipNight() {
                     key={person.id}
                     className="lg:font-normal lg:text-2xl">
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl flex flex-row items-center gap-x-3`}>
                       {person.name}
                     </TableCell>
                     {/* <TableCell>{person.position}</TableCell> */}
                     <TableCell
-                      className={`${worshipFont.className} text-lg lg:font-normal lg:text-2xl text-center`}>
+                      className={`font-futura text-lg lg:font-normal lg:text-2xl text-center`}>
                       {person.notes}
                     </TableCell>
                   </TableRow>
@@ -256,24 +251,25 @@ export default function WorshipNight() {
               }}
             />
           </div>
-          <div className="row-start-2 col-start-2 flex flex-col order-1 lg:order-2"></div>
+          <div className="row-start-1 col-start-2 col-span-4 row-span-2 flex flex-col order-1 lg:order-2">
+            <Image
+              src={"/StageLayout.png"}
+              width={1280}
+              height={800}
+              alt="This is the stage layout"
+              style={{
+                borderRadius: "20px 20px 20px 20px",
+                border: "#7cd656 7px solid",
+                // position: "fixed",
+                // bottom: "100px",
+                // left: "700px",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+              }}
+            />
+          </div>
         </div>
-        <Image
-          src={"/StageLayout.png"}
-          width={1280}
-          height={800}
-          alt="This is the stage layout"
-          style={{
-            borderRadius: "20px 20px 20px 20px",
-            border: "#7cd656 5px solid",
-            position: "fixed",
-            bottom: "100px",
-            left: "700px",
-            width: "50%",
-            height: "50%",
-            display: "flex",
-          }}
-        />
       </div>
     </div>
   )
