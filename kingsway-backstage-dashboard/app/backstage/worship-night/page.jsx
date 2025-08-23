@@ -99,7 +99,7 @@ export default function WorshipNight() {
       {/* <Snowfall /> */}
       <div className="max-h-screen">
         {/* Header Component */}
-        <header className=" text-[#7cd656] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
+        <header className=" text-[#7cd656] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8 font-futura">
           <h1
             className={`text-3xl text-center lg:font-extrabold lg:text-5xl font-futura`}>
             behold. worship nite - south dashboard
@@ -111,10 +111,10 @@ export default function WorshipNight() {
           <ClockComp />
         </header>
         <div
-          className="flex flex-col lg:grid  lg:grid-cols-5 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
+          className="flex flex-col lg:grid  lg:grid-cols-6 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
 
       ">
-          <div className="row-start-1 col-start-1 flex shrink flex-col order-1 lg:order-1">
+          <div className="row-start-1 col-start-1 col-span-2 flex shrink flex-col order-1 lg:order-1">
             <h2
               className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Vocals
@@ -150,7 +150,7 @@ export default function WorshipNight() {
             </Table>
           </div>
           {/* INSTRUMENT PACKS */}
-          <div className="row-start-1 col-start-2 col-span-2 flex shrink flex-col order-2 lg:order-2">
+          <div className="row-start-1 col-start-3 col-span-2 flex shrink flex-col order-2 lg:order-2">
             <h2
               className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               Instrument Packs
@@ -185,7 +185,7 @@ export default function WorshipNight() {
             </Table>
           </div>
           {/* MUSIC DIRECTORS*/}
-          <div className="row-start-1 col-start-4 col-span-2 flex shrink flex-col order-3 lg:order-3">
+          <div className="row-start-1 col-start-5 col-span-2 flex shrink flex-col order-3 lg:order-3">
             <h2
               className={`font-futura text-center text-[#7cd656] text-[32px] font-bold  mx-auto`}>
               MDs
@@ -219,7 +219,7 @@ export default function WorshipNight() {
               </TableBody>
             </Table>
           </div>
-          <div className="row-start-2 col-start-1 flex shrink flex-col order-3 lg:order-4">
+          <div className="row-start-2 col-start-1 col-span-2 flex shrink flex-col order-3 lg:order-4">
             <Image
               src={"/njworshiplogo.png"}
               width={540}
@@ -253,25 +253,24 @@ export default function WorshipNight() {
               }}
             />
           </div>
-          <div className="row-start-1 col-start-2 col-span-4 row-span-2 flex flex-col order-1 lg:order-2 ">
-            <Image
-              src={"/StageLayout.png"}
-              width={1280}
-              height={800}
-              alt="This is the stage layout"
-              style={{
-                borderRadius: "20px 20px 20px 20px",
-                border: "#7cd656 7px solid",
-                // position: "fixed",
-                // bottom: "100px",
-                // left: "700px",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-              }}
-            />
-          </div>
+          <div className="row-start-1 col-start-3 col-span-3 row-span-2 flex flex-col order-1 lg:order-2 "></div>
         </div>
+        <Image
+          src={"/StageLayout.png"}
+          width={640}
+          height={360}
+          alt="This is the stage layout"
+          style={{
+            borderRadius: "20px 20px 20px 20px",
+            border: "#7cd656 7px solid",
+            position: "fixed",
+            bottom: "100px",
+            left: "1000px",
+            width: "50%",
+            height: "56.25%",
+            display: "flex",
+          }}
+        />
       </div>
     </div>
   )
