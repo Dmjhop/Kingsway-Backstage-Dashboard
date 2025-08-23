@@ -14,8 +14,10 @@ import Image from "next/image"
 import localFont from "next/font/local"
 
 const worshipFont = localFont({
-  src: "./futuraCyrillicBold.ttf",
+  src: "../../../public/fonts/FuturaCyrillicBold.ttf",
   variable: "--font-futura",
+  weight: "700",
+  style: "normal",
 })
 
 export default function WorshipNight() {
@@ -251,7 +253,7 @@ export default function WorshipNight() {
               }}
             />
           </div>
-          <div className="row-start-1 col-start-2 col-span-4 row-span-2 flex flex-col order-1 lg:order-2">
+          <div className="row-start-1 col-start-2 col-span-4 row-span-2 flex flex-col order-1 lg:order-2 ">
             <Image
               src={"/StageLayout.png"}
               width={1280}

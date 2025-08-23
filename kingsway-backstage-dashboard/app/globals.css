@@ -81,3 +81,10 @@
 h1 h2 h3 {
   z-index: 3;
 }
+
+@font-face {
+  font-family: "FuturaCyrillicBold";
+  src: url("/fonts/FuturaCyrillicBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
