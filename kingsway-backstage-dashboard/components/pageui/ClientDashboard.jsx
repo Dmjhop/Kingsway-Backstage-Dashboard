@@ -17,7 +17,7 @@ import { useEffect, useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
 import defaultLayoutImg from "@/public/No Current Layout.png"
 
-// React Server Components
+// React Server Components just checking something
 import * as motion from "framer-motion/client"
 import "dotenv/config"
 require("dotenv").config()
