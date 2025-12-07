@@ -74,14 +74,14 @@ export default function ClientDashboard({
   }, [])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setIsVisible((prevIsVisible) => !prevIsVisible)
-  //   }, 15000)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible((prevIsVisible) => !prevIsVisible)
+    }, 15000)
 
-  //   // Clean up the interval on component unmount
-  //   return () => clearInterval(interval)
-  // }, [])
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval)
+  }, [])
 
   // * COMMENT/UNCOMMENT THIS ^^ABOVE^^ WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
