@@ -25,7 +25,9 @@ export default function VocalsTable(props) {
   console.log(vocalsList)
   return (
     <div className="row-start-1 col-start-1 flex shrink flex-col order-1">
-      <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+      <h2
+        className={`text-center text-[32px] font-bold  mx-auto`}
+        style={{ color: `#${props.textColor}` }}>
         Vocals
       </h2>
       <Table className="">

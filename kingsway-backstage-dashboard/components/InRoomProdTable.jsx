@@ -14,7 +14,9 @@ import Image from "next/image"
 export default function InRoomProdTable(props) {
   return (
     <div className="row-start-2 col-start-1 flex flex-col order-4">
-      <h3 className="w-[283px] h-[50px] text-center text-[#00bbe4] text-[32px] font-bold justify-items-center mx-auto">
+      <h3
+        className="w-[283px] h-[50px] text-center text-[32px] font-bold justify-items-center mx-auto"
+        style={{ color: `#${props.textColor}` }}>
         In Room
       </h3>
       <Table className="">

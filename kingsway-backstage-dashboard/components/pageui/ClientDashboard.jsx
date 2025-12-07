@@ -74,14 +74,14 @@ export default function ClientDashboard({
   }, [])
   // * COMMENT/UNCOMMENT THIS vvBELOWvv WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible((prevIsVisible) => !prevIsVisible)
-    }, 15000)
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setIsVisible((prevIsVisible) => !prevIsVisible)
+  //   }, 15000)
 
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval)
-  }, [])
+  //   // Clean up the interval on component unmount
+  //   return () => clearInterval(interval)
+  // }, [])
 
   // * COMMENT/UNCOMMENT THIS ^^ABOVE^^ WHENEVER YOU WANT TO EDIT THE TABLES OF THE DASHBOARD
 
@@ -350,13 +350,24 @@ export default function ClientDashboard({
 
   // normal color = text-[#00bbe4]
   // christmas colors =
+  const christmasColorTitle = "c51d2b"
+
+  const christmasColors = {
+    red: "c51d2b",
+    gold: "a57f27",
+    green: "1E792C",
+    gray: "aeaeae",
+    white: "fff8ea",
+  }
 
   return (
     <div>
-      {/* <Snowfall /> */}
+      <Snowfall />
       <div className="max-h-screen">
         {/* Header Component */}
-        <header className=" text-[#00bbe4] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
+        <header
+          className={`{text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8`}
+          style={{ color: `#${christmasColors.gold}` }}>
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
@@ -367,10 +378,12 @@ export default function ClientDashboard({
               {dispDate.todayDate}
             </h2>
           ))} */}
-          <h2 className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
+          <h2
+            className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1"
+            style={{ color: `#${christmasColors.red}` }}>
             {updatedDate}
           </h2>
-          <ClockComp />
+          <ClockComp textColor={christmasColors.green} />
         </header>
         {/* Dashboard Entire Component */}
         {/* {isVisible && (
@@ -403,12 +416,17 @@ export default function ClientDashboard({
 
       ">
           {/* VOCALS TEAM CHART */}
-          <VocalsTable people={vocalList} styles={picStyles} />
+          <VocalsTable
+            people={vocalList}
+            styles={picStyles}
+            textColor={christmasColorTitle}
+          />
           {/* BAND TEAM CHART */}
           <BandTable
             band1={sortedBand}
             band2={filteredOrchestra}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
 
           {/* SERVICE INFO TEAM CHART */}
@@ -417,10 +435,13 @@ export default function ClientDashboard({
             sermonTitle={currentService.data[0].attributes.title}
             people={filteredCampus}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           <div className="order-8">
             <div>
-              <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              <h2
+                className=" text-center text-[32px] font-bold  mx-auto"
+                style={{ color: `#${christmasColorTitle}` }}>
                 Weather
               </h2>
               &nbsp;
@@ -431,7 +452,9 @@ export default function ClientDashboard({
             </div>
             &nbsp;
             <div>
-              <h2 className=" text-center text-[#00bbe4] text-[32px] font-bold  mx-auto">
+              <h2
+                className=" text-center text-[32px] font-bold  mx-auto"
+                style={{ color: `#${christmasColorTitle}` }}>
                 Verse Of The Day
               </h2>
               <VerseOfTheDay />
@@ -442,20 +465,24 @@ export default function ClientDashboard({
           <InRoomProdTable
             people={sortedInRoomProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           {/* BROADCAST PRODUCTION TEAM CHART */}
           <BroadcastProdTable
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           {/* ONLINE PRODUCTION TEAM CHART */}
           <OnlineProdTable
             people={sortedOnlineProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
         </div>
       </div>
