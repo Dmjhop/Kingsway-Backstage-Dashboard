@@ -245,7 +245,7 @@ export default function ClientDashboard({
     "Sermon Upload",
     "ProPresenter",
     "Lights",
-    "Production Tech",
+    "Production Technician",
   ]
   const getRidOnlineVals = [
     "Camera",
@@ -254,7 +254,7 @@ export default function ClientDashboard({
     "FOH Sound",
     "ProPresenter",
     "Lights",
-    "Production Tech",
+    "Production Technician",
     "Broadcast Coordinator",
     "Video Switcher",
     "Broadcast Audio",

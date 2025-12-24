@@ -12,15 +12,15 @@ import {
 import Image from "next/image"
 
 export default function ChrInRoom1(props) {
-  const getRidForCamVals = ["ProPresenter", "Lights"]
+  // const getRidForCamVals = ["ProPresenter", "Lights"]
 
   // console.log(props.people)
 
-  let cameraList = []
+  // let cameraList = []
 
-  cameraList = props.people.filter(
-    (person) => !getRidForCamVals.includes(person.position)
-  )
+  // cameraList = props.people.filter(
+  //   (person) => !getRidForCamVals.includes(person.position)
+  // )
   return (
     <div className="row-start-2 col-start-1 flex flex-col order-4">
       <h3 className="w-[283px] h-[50px] text-center text-[#76b972] text-[32px] font-bold justify-items-center mx-auto">

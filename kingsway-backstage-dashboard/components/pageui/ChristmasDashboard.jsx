@@ -10,6 +10,7 @@ import ChrInRoom1 from "@/components/ChrInRoom1"
 import ChrInRoom2 from "@/components/ChrInRoom2"
 import BroadcastProdTable from "@/components/BroadcastProdTable"
 import BroadcastProdTable2 from "@/components/BroadcastProdTable2"
+import OnlineProdTable from "@/components/OnlineProdTable"
 import ServiceInfoTable from "@/components/ServiceInfoTable"
 import WeatherBlock from "@/components/WeatherBlock"
 import VerseOfTheDay from "@/components/VerseOfTheDay"
@@ -257,7 +258,7 @@ export default function ChristmasDashboard({
     "Sermon Upload",
     "ProPresenter",
     "Lights",
-    "Production Tech",
+    "Production Technician",
   ]
   const getRidOnlineVals = [
     "Camera",
@@ -266,7 +267,7 @@ export default function ChristmasDashboard({
     "FOH Sound",
     "ProPresenter",
     "Lights",
-    "Production Tech",
+    "Production Technician",
     "Broadcast Coordinator",
     "Video Switcher",
     "Broadcast Audio",
@@ -359,12 +360,24 @@ export default function ChristmasDashboard({
   // normal color = text-[#00bbe4]
   // christmas colors =
 
+  const christmasColorTitle = "c51d2b"
+
+  const christmasColors = {
+    red: "c51d2b",
+    gold: "a57f27",
+    green: "1E792C",
+    gray: "aeaeae",
+    white: "fff8ea",
+  }
+
   return (
     <div>
       <Snowfall style={{ zIndex: "-1" }} />
       <div className="max-h-screen">
         {/* Header Component */}
-        <header className=" text-[#d14150] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8">
+        <header
+          className=" text-[#d14150] text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8"
+          style={{ color: `#${christmasColors.gold}` }}>
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
@@ -396,11 +409,12 @@ export default function ChristmasDashboard({
           {dateOfService.map((dispDate) => (
             <h2
               key={dispDate}
-              className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1">
+              className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1"
+              style={{ color: `#${christmasColors.red}` }}>
               {dispDate.todayDate}
             </h2>
           ))}
-          <ClockComp />
+          <ClockComp textColor={christmasColors.green} />
         </header>
         {/* Dashboard Entire Component */}
         {/* {isVisible && (
@@ -443,12 +457,17 @@ export default function ChristmasDashboard({
           className="flex flex-col lg:grid  lg:grid-cols-4 lg:mx-8  lg:px-6  lg:grid-rows-[minmax(1fr,_540px)_minmax(1fr,_540px)]
       ">
           {/* VOCALS TEAM CHART */}
-          <VocalsTable people={vocalList} styles={picStyles} />
+          <VocalsTable
+            people={vocalList}
+            styles={picStyles}
+            textColor={christmasColorTitle}
+          />
           {/* BAND TEAM CHART */}
           <BandTable
             band1={sortedBand}
             band2={filteredOrchestra}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
 
           {/* SERVICE INFO TEAM CHART */}
@@ -457,21 +476,26 @@ export default function ChristmasDashboard({
             sermonTitle={currentService.data[0].attributes.title}
             people={filteredCampus}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           <div className="order-8">
             <div>
-              <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
+              <h2
+                className=" text-center  text-[32px] font-bold  mx-auto"
+                style={{ color: `#${christmasColors.red}` }}>
                 Weather
               </h2>
               &nbsp;
               <div className="flex flex-row justify-evenly">
                 <WeatherBlock title={`CHL`}></WeatherBlock>
-                <WeatherBlock title={`GLB`}></WeatherBlock>
+                <WeatherBlock title={`WTP`}></WeatherBlock>
               </div>
             </div>
             &nbsp;
             <div>
-              <h2 className=" text-center text-[#d14150] text-[32px] font-bold  mx-auto">
+              <h2
+                className=" text-center  text-[32px] font-bold  mx-auto"
+                style={{ color: `#${christmasColors.red}` }}>
                 Verse Of The Day
               </h2>
               <ChrVOTD />
@@ -479,28 +503,33 @@ export default function ChristmasDashboard({
           </div>
 
           {/* IN ROOM PRODUCTION TEAM CHART */}
-          <ChrInRoom1
+          <InRoomProdTable
             people={sortedInRoomProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
-          <ChrInRoom2
+          {/* IN ROOM PRODUCTION TEAM CHART */}
+          <InRoomProdTable
             people={sortedInRoomProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           {/* BROADCAST PRODUCTION TEAM CHART */}
-          {/* <BroadcastProdTable
+          <BroadcastProdTable
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-          /> */}
+            textColor={christmasColorTitle}
+          />
           <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
           {/* ONLINE PRODUCTION TEAM CHART */}
-          <ChrOnlineBroadTable
-            onlinePeople={sortedOnlineProductionPeopleList}
-            broadcastPeople={sortedBroadcastProductionPeopleList}
+          <OnlineProdTable
+            people={sortedOnlineProductionPeopleList}
             styles={picStyles}
+            textColor={christmasColorTitle}
           />
         </div>
       </div>
