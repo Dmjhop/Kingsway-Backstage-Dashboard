@@ -190,7 +190,7 @@ export default function ClientDashboard({
 
   // ! Establishing VOCALS Declined Folks
   const filteredVocals = worshipPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
+    (item) => item.status !== "D" && item.status !== "U",
   )
   // ? ALPHABETIZING THEM
   let sortedVocalList = filteredVocals.sort((a, b) => {
@@ -201,7 +201,7 @@ export default function ClientDashboard({
 
   // ! Establishing BAND Declined Folks
   const filteredBand = bandPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
+    (item) => item.status !== "D" && item.status !== "U",
   )
   const sortedBand = filteredBand.sort((a, b) => {
     if (a.position < b.position) return -1
@@ -211,17 +211,17 @@ export default function ClientDashboard({
 
   // ! Establishing ORCHESTRA Declined Folks
   const filteredOrchestra = orchestraPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
+    (item) => item.status !== "D" && item.status !== "U",
   )
 
   // ! Establishing PRODUCTION Declined Folks
   const filteredProduction = productionPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
+    (item) => item.status !== "D" && item.status !== "U",
   )
 
   // ! Establishing CAMPUS Declined Folks
   const filteredCampus = campusPeopleList.filter(
-    (item) => item.status !== "D" && item.status !== "U"
+    (item) => item.status !== "D" && item.status !== "U",
   )
   // ! Takes out Positions Unnecessary to the Dashboard
   const getRidinRoomVals = [
@@ -265,15 +265,15 @@ export default function ClientDashboard({
   let vocalList = []
 
   inRoomProductionPeopleList = filteredProduction.filter(
-    (person) => !getRidinRoomVals.includes(person.position)
+    (person) => !getRidinRoomVals.includes(person.position),
   )
 
   broadcastProductionPeopleList = filteredProduction.filter(
-    (person) => !getRidBroadcastVals.includes(person.position)
+    (person) => !getRidBroadcastVals.includes(person.position),
   )
 
   onlineProductionPeopleList = filteredProduction.filter(
-    (person) => !getRidOnlineVals.includes(person.position)
+    (person) => !getRidOnlineVals.includes(person.position),
   )
 
   // console.log("sortedVocalList before filtering:", sortedVocalList)
@@ -281,7 +281,7 @@ export default function ClientDashboard({
   vocalList = sortedVocalList.filter(
     (person) =>
       !getRidVocalVals.includes(person.position) ||
-      ["Song Leader - Male", "Song Leader - Female"].includes(person.position)
+      ["Song Leader - Male", "Song Leader - Female"].includes(person.position),
   )
 
   // ? ALPHABETIZING THEM
@@ -290,7 +290,7 @@ export default function ClientDashboard({
       if (a.position > b.position) return -1
       if (a.position < b.position) return 1
       return 0
-    }
+    },
   )
 
   const broadcastPositions = [
@@ -319,11 +319,11 @@ export default function ClientDashboard({
       const posA = inRoomPositions.indexOf(a.position)
       const posB = inRoomPositions.indexOf(b.position)
       return posA - posB
-    }
+    },
   )
 
   campusPeopleList = campusPeopleList.filter(
-    (person) => !getRidCampusVals.includes(person.position)
+    (person) => !getRidCampusVals.includes(person.position),
   )
 
   // console.log(vocalList)
@@ -348,9 +348,9 @@ export default function ClientDashboard({
     zIndex: "1000",
   }
 
-  // normal color = text-[#00bbe4]
+  const normalColor = "00bbe4"
   // christmas colors =
-  const christmasColorTitle = "c51d2b"
+  // const christmasColorTitle = "c51d2b"
 
   const christmasColors = {
     red: "c51d2b",
@@ -362,12 +362,12 @@ export default function ClientDashboard({
 
   return (
     <div>
-      <Snowfall />
+      {/* <Snowfall /> */}
       <div className="max-h-screen">
         {/* Header Component */}
         <header
           className={`{text-5xl font-black flex flex-col lg:flex-row justify-between mx-10 py-9 lg:px-8`}
-          style={{ color: `#${christmasColors.gold}` }}>
+          style={{ color: `#${normalColor}` }}>
           <h1 className="text-3xl text-center lg:font-extrabold lg:text-5xl">
             Kingsway Church Worship Dashboard
           </h1>
@@ -380,10 +380,10 @@ export default function ClientDashboard({
           ))} */}
           <h2
             className="text-2xl text-center lg:font-extrabold lg:text-5xl order-1"
-            style={{ color: `#${christmasColors.red}` }}>
+            style={{ color: `#${normalColor}` }}>
             {updatedDate}
           </h2>
-          <ClockComp textColor={christmasColors.green} />
+          <ClockComp textColor={normalColor} />
         </header>
         {/* Dashboard Entire Component */}
         {/* {isVisible && (
@@ -419,14 +419,14 @@ export default function ClientDashboard({
           <VocalsTable
             people={vocalList}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
           {/* BAND TEAM CHART */}
           <BandTable
             band1={sortedBand}
             band2={filteredOrchestra}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
 
           {/* SERVICE INFO TEAM CHART */}
@@ -435,13 +435,13 @@ export default function ClientDashboard({
             sermonTitle={currentService.data[0].attributes.title}
             people={filteredCampus}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
           <div className="order-8">
             <div>
               <h2
                 className=" text-center text-[32px] font-bold  mx-auto"
-                style={{ color: `#${christmasColorTitle}` }}>
+                style={{ color: `#${normalColor}` }}>
                 Weather
               </h2>
               &nbsp;
@@ -454,7 +454,7 @@ export default function ClientDashboard({
             <div>
               <h2
                 className=" text-center text-[32px] font-bold  mx-auto"
-                style={{ color: `#${christmasColorTitle}` }}>
+                style={{ color: `#${normalColor}` }}>
                 Verse Of The Day
               </h2>
               <VerseOfTheDay />
@@ -465,24 +465,24 @@ export default function ClientDashboard({
           <InRoomProdTable
             people={sortedInRoomProductionPeopleList}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
           {/* BROADCAST PRODUCTION TEAM CHART */}
           <BroadcastProdTable
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
           <BroadcastProdTable2
             people={sortedBroadcastProductionPeopleList}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
           {/* ONLINE PRODUCTION TEAM CHART */}
           <OnlineProdTable
             people={sortedOnlineProductionPeopleList}
             styles={picStyles}
-            textColor={christmasColorTitle}
+            textColor={normalColor}
           />
         </div>
       </div>
